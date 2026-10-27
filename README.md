@@ -9,8 +9,13 @@ It measures how much energy the Jetson Orin Nano Developer Kit uses to generate 
 | `q8_0` | 8-bit quantized KV cache | ~53% |
 | `q4_0` | 4-bit quantized KV cache | ~28% |
 
-This is the quantization experiment the Tesla T4 couldn't run (KIVI needed Ampere). The Orin Nano is Ampere (sm_87).
+In the thesis, the published KIVI implementations (optimum-quanto's Marlin kernel, KIVI's own CUDA extension) need an
+Ampere GPU (sm_80+) and failed on the Tesla T4, and the hqq backend failed to install. llama.cpp's quantized KV cache
+would also build for the T4; the move to the Jetson is about the edge question, not about the T4.
 Eviction methods (StreamingLLM/SnapKV via kvpress) need PyTorch on the Jetson and come next.
+
+**v2 (26–27 Oct 2026)** answers the review of the first report: see [v2 experiments](#v2-experiments) below,
+`analysis/analyze_v2.py` and `Jetson_KV_Report_v2.pdf`.
 
 **What's measured for each model × KV type × context length (1K, 4K, 8K, 16K):**
 - Energy from the board's built-in INA3221 power monitor (`VDD_IN` = whole module), with idle power subtracted, split into prefill and decode
@@ -31,11 +36,18 @@ thesis2/
 │   ├── check_env.sh   # what board / JetPack / power mode / sensors do we have?
 │   ├── setup.sh       # build llama.cpp (CUDA) + download models + text
 │   ├── power.py       # INA3221 power sampler (also: live sanity check)
-│   ├── bench_kv.py    # the energy benchmark
-│   └── ppl_kv.sh      # accuracy (perplexity) per KV type
+│   ├── bench_kv.py    # the energy benchmark (v2: K/V pairs, flash attn off, parallel sessions, fit test)
+│   ├── ppl_kv.sh      # accuracy (perplexity) per KV type (v1)
+│   ├── setup_v2.sh    # v2 extras: llama-bench, all-quants build, Q4_K_M models
+│   ├── bench_pp_tg.py # v2: prefill and decode energy as separate llama-bench runs
+│   ├── ppl_v2.sh      # v2: perplexity at 8K context + K/V split
+│   ├── profile.sh     # v2: nsys kernel times, ncu compute-vs-memory of the attention kernel
+│   └── run_v2.sh      # v2: runs all of the above for one power mode
 ├── analysis/
-│   └── plot.py        # runs on the Mac: results -> plots/*.png + plots/summary.md
-└── results/           # JSONL/CSV outputs land here
+│   ├── plot.py        # v1 plots: results -> plots/*.png + plots/summary.md
+│   ├── analyze_v2.py  # v2 statistics (paired 95% CIs), tables and plots -> plots_v2/
+│   └── make_report.py # builds Jetson_KV_Report_v2.pdf from plots_v2/stats.json
+└── results/           # JSONL/CSV outputs land here (raw data of every run)
 ```
 
 ---
@@ -150,18 +162,38 @@ open plots
 
 ---
 
-## What to say when presenting
+## v2 experiments
 
-1. **Setup:** Jetson Orin Nano 8 GB, JetPack 6, llama.cpp with CUDA, power from the onboard INA3221 (`VDD_IN`, whole module), idle subtracted.
-2. **Method:** equal output length for every run, shuffled order, 3 repeats, mean ± std.
-3. **Result:** read off plot 02. How much does a 4-bit or 8-bit KV cache save per token, and does the saving grow with context? Expected: yes, because decode re-reads the whole KV cache for every token and the Orin Nano's memory bandwidth is limited. Check what the data actually shows before claiming it.
-4. **Trade-off:** perplexity column in `summary.md`. What accuracy does 4-bit cost?
-5. **Next:** add eviction methods (kvpress), a power-mode sweep, larger models, and a server-GPU comparison.
+Run after `setup.sh`, on the Jetson, inside tmux:
+```bash
+bash jetson/setup_v2.sh                                   # llama-bench, all-quants build, Q4_K_M models
+bash jetson/run_v2.sh 15W 2>&1 | tee results/run_v2_15W.log
+sudo bash jetson/profile.sh ncu                           # GPU counters need root
+sudo nvpmodel -m 1 --force                                # reboots into 7W
+bash jetson/run_v2.sh 7W 2>&1 | tee results/run_v2_7W.log
+sudo nvpmodel -m 0 --force                                # back to 15W
+```
+| Set | Tag | What it answers |
+|---|---|---|
+| A. Main grid, 5 rounds, f16 with flash attention on **and off** | `15W-v2`, `7W-v2` | noise (paired CIs), baseline strength, gross vs net |
+| B. llama-bench prefill (pp) and decode (tg at depth) as separate tests | `pptg_*.jsonl` | removes the prefill/decode split error |
+| C. Perplexity at 8K context (16K runs out of memory); K/V split and q4_1 | `ppl_v2_*.csv` | accuracy at the energy context; why Qwen breaks |
+| D. 1, 2, 4, 8 parallel sessions | `15W-np` | where compression could pay off |
+| E. Q4_K_M weights | `15W-w4` | weight format × KV format |
+| F. nsys / ncu profiles at 16K | `results/prof/` | mechanism |
+| G. Llama-1B at 32K/64K, Llama-3B at 16K–64K, auto-fit off | `15W-fit1b`, `15W-fit3b` | the memory benefit: where f16 no longer fits |
 
-**Caveats to state honestly:**
-- `VDD_IN` is module power, not GPU-only like NVML, so the numbers aren't directly comparable with the T4 thesis data.
-- The prefill/decode split is approximate (it uses llama.cpp's timing).
-- These are 0.5–1B models, where the KV cache is small relative to the weights. Savings should grow with longer contexts and bigger models.
+On the Mac: `python3 analysis/analyze_v2.py` then `python3 analysis/make_report.py`.
+
+## What the data shows (v2, details in `Jetson_KV_Report_v2.pdf`)
+
+1. **Setup:** Jetson Orin Nano 8 GB, L4T R39.2 (JetPack 7 line), llama.cpp with CUDA, power from the onboard INA3221 (`VDD_IN`, whole module), net (idle subtracted) and gross.
+2. **Method:** 128 generated tokens per request, shuffled order, 5 rounds, changes against f16 paired by round with 95% CIs.
+3. **Result:** an 8-bit or 4-bit KV cache uses *more* energy than f16 at every context from 1K to 16K, +13–18% per request and +29–58% per decoded token at 16K (15W). Also true with Q4_K_M weights and with up to 8 parallel sessions.
+4. **Why:** with f16, decode attention runs on a memory-bound tensor-core kernel; with a quantized cache llama.cpp uses a CUDA-core "vec" kernel that re-reads and unpacks the cache for every query head (nsys/ncu, `results/prof/`).
+5. **What compression buys:** room. Llama-3B fits 16K with f16, 32K with 8-bit, 64K with 4-bit; Llama-1B with 8 × 16K sessions only fits with a quantized cache.
+6. **Accuracy:** 8-bit is free; 4-bit costs Llama ~5% perplexity and breaks Qwen (13 → 100+), because of the 4-bit *keys* (4-bit values alone are fine).
+7. **7W mode:** same result (quantized up to +28% per request at 16K), and 7W itself costs +21–31% net / +60–73% gross energy per request compared with 15W.
 
 ## Troubleshooting
 

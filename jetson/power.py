@@ -78,6 +78,24 @@ def discover_gpu_freq():
     return None
 
 
+def discover_gpu_load():
+    """GPU busy fraction file (0..1000) of the integrated GPU."""
+    for pat in ['/sys/devices/platform/bus@0/*.gpu/load', '/sys/devices/platform/*gpu*/load',
+                '/sys/devices/gpu.0/load']:
+        hits = glob.glob(pat)
+        if hits:
+            return hits[0]
+    return None
+
+
+def cpu_jiffies():
+    """(busy, total) jiffies summed over all CPUs, from /proc/stat."""
+    with open('/proc/stat') as f:
+        v = [int(x) for x in f.readline().split()[1:]]
+    idle = v[3] + (v[4] if len(v) > 4 else 0)  # idle + iowait
+    return sum(v) - idle, sum(v)
+
+
 def mem_available_mb():
     with open('/proc/meminfo') as f:
         for line in f:
@@ -89,7 +107,8 @@ def mem_available_mb():
 # ---------------------------------------------------------------- sampler
 
 class PowerMeter:
-    """Continuous background sampler. samples = [(t_monotonic, {rail: W}, mem_avail_mb)]."""
+    """Continuous background sampler.
+    samples = [(t_monotonic, {rail: W}, mem_avail_mb, {'gpu_load': 0..1, 'cpu': (busy, total) jiffies})]."""
 
     def __init__(self, interval=0.05):
         self.interval = interval
@@ -101,6 +120,7 @@ class PowerMeter:
         self.iio = {} if self.hwmon else discover_iio_rails()
         self.thermal = discover_thermal()
         self.gpu_freq_path = discover_gpu_freq()
+        self.gpu_load_path = discover_gpu_load()
         if self.hwmon:
             self.backend = 'sysfs-hwmon'
         elif self.iio:
@@ -115,12 +135,21 @@ class PowerMeter:
                     for name, (v, c) in self.hwmon.items()}
         return {name: int(_read(p)) / 1000.0 for name, p in self.iio.items()}
 
+    def _util(self):
+        u = {'cpu': cpu_jiffies()}
+        if self.gpu_load_path:
+            try:
+                u['gpu_load'] = int(_read(self.gpu_load_path)) / 1000.0
+            except (OSError, ValueError):
+                pass
+        return u
+
     def _loop_sysfs(self):
         while self._running:
             try:
                 w = self._read_sysfs()
                 with self._lock:
-                    self.samples.append((time.monotonic(), w, mem_available_mb()))
+                    self.samples.append((time.monotonic(), w, mem_available_mb(), self._util()))
             except OSError:
                 pass
             time.sleep(self.interval)
@@ -136,7 +165,7 @@ class PowerMeter:
             w = {m.group(1): int(m.group(2)) / 1000.0 for m in rx.finditer(line)}
             if w:
                 with self._lock:
-                    self.samples.append((time.monotonic(), w, mem_available_mb()))
+                    self.samples.append((time.monotonic(), w, mem_available_mb(), self._util()))
 
     def start(self):
         self._running = True
@@ -180,6 +209,19 @@ class PowerMeter:
     def min_mem_available(self, t0, t1):
         s = self.window(t0, t1)
         return min(x[2] for x in s) if s else float('nan')
+
+    def gpu_load(self, t0, t1):
+        """Mean GPU busy fraction (0..1) in the window, or None."""
+        v = [x[3]['gpu_load'] for x in self.window(t0, t1) if 'gpu_load' in x[3]]
+        return sum(v) / len(v) if v else None
+
+    def cpu_busy(self, t0, t1):
+        """Fraction of all CPU time that was busy in the window (0..1), from /proc/stat."""
+        s = self.window(t0, t1)
+        if len(s) < 2:
+            return None
+        (b0, a0), (b1, a1) = s[0][3]['cpu'], s[-1][3]['cpu']
+        return (b1 - b0) / (a1 - a0) if a1 > a0 else None
 
     def temps(self):
         out = {}

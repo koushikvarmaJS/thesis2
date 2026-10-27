@@ -1,0 +1,5 @@
+model,type_k,type_v,ctx,chunks,build,ppl,ppl_err,seconds
+Llama-3.2-1B-Instruct-Q8_0,f16,f16,16384,16,build,,,26
+Llama-3.2-1B-Instruct-Q8_0,q8_0,q8_0,16384,16,build,,,26
+Llama-3.2-1B-Instruct-Q8_0,q4_0,q4_0,16384,16,build,,,28
+qwen2.5-0.5b-instruct-q8_0,f16,f16,16384,16,build,,,19

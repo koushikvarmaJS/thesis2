@@ -1,0 +1,12 @@
+0.19.634.272 I cmn          init: llama threadpool init, n_threads = 6
+0.20.082.846 I 
+0.20.083.112 I system_info: n_threads = 6 (n_threads_batch = 6) / 6 | CUDA : ARCHS = 870 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.20.083.158 I perplexity: tokenizing the input ..
+0.20.583.119 I perplexity: tokenization took 499.939 ms
+0.20.583.298 I perplexity: calculating perplexity over 16 chunks, n_ctx=16384, batch_size=16384, n_seq=1
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12

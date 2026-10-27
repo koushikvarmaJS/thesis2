@@ -1,0 +1,13 @@
+model,type_k,type_v,ctx,chunks,build,ppl,ppl_err,seconds
+Llama-3.2-1B-Instruct-Q8_0,f16,f16,8192,32,build,11.0659,0.08062,242
+Llama-3.2-1B-Instruct-Q8_0,q8_0,q8_0,8192,32,build,11.0629,0.08066,236
+Llama-3.2-1B-Instruct-Q8_0,q4_0,q4_0,8192,32,build,11.6151,0.08460,231
+qwen2.5-0.5b-instruct-q8_0,f16,f16,8192,32,build,12.4906,0.09574,157
+qwen2.5-0.5b-instruct-q8_0,q8_0,q8_0,8192,32,build,12.6488,0.09718,153
+qwen2.5-0.5b-instruct-q8_0,q4_0,q4_0,8192,32,build,155.7508,1.68259,151
+qwen2.5-0.5b-instruct-q8_0,q4_0,q4_0,8192,32,build-allq,155.7508,1.68259,153
+qwen2.5-0.5b-instruct-q8_0,f16,q4_0,8192,32,build-allq,12.5315,0.09603,150
+qwen2.5-0.5b-instruct-q8_0,q4_0,f16,8192,32,build-allq,156.8290,1.69726,150
+qwen2.5-0.5b-instruct-q8_0,q8_0,q4_0,8192,32,build-allq,12.6923,0.09743,152
+qwen2.5-0.5b-instruct-q8_0,q4_0,q8_0,8192,32,build-allq,155.6349,1.68314,152
+qwen2.5-0.5b-instruct-q8_0,q4_1,q4_1,8192,32,build-allq,145.9217,1.57112,152

@@ -1,0 +1,8 @@
+error while handling argument "-fa": expected value for argument
+
+usage:
+-fa,   --flash-attn [on|off|auto]       set Flash Attention use ('on', 'off', or 'auto', default: 'auto')
+                                        (env: LLAMA_ARG_FLASH_ATTN)
+
+
+to show complete usage, run with -h

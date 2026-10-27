@@ -1,0 +1,26 @@
+0.00.032.468 I srv  llama_server: initializing ...
+0.00.032.510 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.033.383 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.035.550 I srv    load_model: loading model 'models_extra/Llama-3.2-3B-Instruct-Q4_K_M.gguf'
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+0.21.495.349 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 7196.00 MiB on device 0: cudaMalloc failed: out of memory
+0.21.495.373 E ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 7545552896
+0.21.518.151 E llama_init_from_model: failed to initialize the context: failed to allocate buffer for kv cache
+0.21.518.294 E cmn  common_init_: failed to create context with model 'models_extra/Llama-3.2-3B-Instruct-Q4_K_M.gguf'
+0.21.518.339 E cmn  common_init_: failed to create context with model 'models_extra/Llama-3.2-3B-Instruct-Q4_K_M.gguf'
+0.21.518.375 E srv    load_model: failed to create_context with model 'models_extra/Llama-3.2-3B-Instruct-Q4_K_M.gguf'
+0.21.518.403 I srv    operator(): operator(): cleaning up before exit...
+0.21.520.098 E srv  llama_server: exiting due to model loading error
+error while handling argument "-fa": expected value for argument
+
+usage:
+-fa,   --flash-attn [on|off|auto]       set Flash Attention use ('on', 'off', or 'auto', default: 'auto')
+                                        (env: LLAMA_ARG_FLASH_ATTN)
+
+
+to show complete usage, run with -h

@@ -1,0 +1,15 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 7485 MiB):
+  Device 0: Orin, compute capability 8.7, VMM: yes, VRAM: 7485 MiB
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen2 1B Q8_0                  | 638.74 MiB |   630.17 M | CUDA       |  99 |   q8_0 |   q8_0 |   1 |   tg64 @ d16384 |         31.89 ± 0.00 |
+
+build: 7adf160 (1)
+Collecting data...
+Generating '/tmp/nsys-report-5fdb.qdstrm'
+[1/1] [0%                          ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [0%                          ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [7%                          ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [13%                         ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [==19%                       ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [===24%                      ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [====25%                     ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [=====30%                    ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [=======36%                  ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [========42%                 ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [==========48%               ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [===========50%              ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [===========51%              ] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [========================100%] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep[1/1] [========================100%] qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep
+Generated:
+	/home/koushik/thesis2/results/prof/qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep
+Generating SQLite file results/prof/qwen2.5-0.5b-instruct-q8_0_q8_0_faon.sqlite from results/prof/qwen2.5-0.5b-instruct-q8_0_q8_0_faon.nsys-rep
+Processing [results/prof/qwen2.5-0.5b-instruct-q8_0_q8_0_faon.sqlite] with [/opt/nvidia/nsight-systems/2025.6.3/host-linux-armv8/reports/cuda_gpu_kern_sum.py] to [results/prof/qwen2.5-0.5b-instruct-q8_0_q8_0_faon_cuda_gpu_kern_sum.csv]... PROCESSED
+

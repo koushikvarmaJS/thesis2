@@ -1,0 +1,15 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 7485 MiB):
+  Device 0: Orin, compute capability 8.7, VMM: yes, VRAM: 7485 MiB
+| model                          |       size |     params | backend    | ngl |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --: | --------------: | -------------------: |
+| qwen2 1B Q8_0                  | 638.74 MiB |   630.17 M | CUDA       |  99 |   0 |   tg64 @ d16384 |         26.86 ± 0.00 |
+
+build: 7adf160 (1)
+Collecting data...
+Generating '/tmp/nsys-report-bd6b.qdstrm'
+[1/1] [0%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [0%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [8%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [6%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [5%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [9%                          ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [14%                         ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [==19%                       ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [===24%                      ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [=====29%                    ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [======34%                   ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [=======39%                  ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [=========44%                ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [=========45%                ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [===========50%              ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [===========52%              ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [===========53%              ] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [========================100%] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep[1/1] [========================100%] qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep
+Generated:
+	/home/koushik/thesis2/results/prof/qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep
+Generating SQLite file results/prof/qwen2.5-0.5b-instruct-q8_0_f16_faoff.sqlite from results/prof/qwen2.5-0.5b-instruct-q8_0_f16_faoff.nsys-rep
+Processing [results/prof/qwen2.5-0.5b-instruct-q8_0_f16_faoff.sqlite] with [/opt/nvidia/nsight-systems/2025.6.3/host-linux-armv8/reports/cuda_gpu_kern_sum.py] to [results/prof/qwen2.5-0.5b-instruct-q8_0_f16_faoff_cuda_gpu_kern_sum.csv]... PROCESSED
+

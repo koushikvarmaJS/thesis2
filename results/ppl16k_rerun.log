@@ -1,0 +1,8 @@
+jetson/ppl_v2.sh: line 16: 44275 Killed                  "$bin" -m "$m" -f data/wiki.test.raw -c "$c" -b "$c" -ub 512 --chunks "$n" -ngl 99 -fa on -ctk "$k" -ctv "$v" > "$log" 2>&1
+Llama-3.2-1B-Instruct-Q8_0,f16,f16,16384,16,build,,,26
+jetson/ppl_v2.sh: line 16: 44359 Killed                  "$bin" -m "$m" -f data/wiki.test.raw -c "$c" -b "$c" -ub 512 --chunks "$n" -ngl 99 -fa on -ctk "$k" -ctv "$v" > "$log" 2>&1
+Llama-3.2-1B-Instruct-Q8_0,q8_0,q8_0,16384,16,build,,,26
+jetson/ppl_v2.sh: line 16: 44379 Killed                  "$bin" -m "$m" -f data/wiki.test.raw -c "$c" -b "$c" -ub 512 --chunks "$n" -ngl 99 -fa on -ctk "$k" -ctv "$v" > "$log" 2>&1
+Llama-3.2-1B-Instruct-Q8_0,q4_0,q4_0,16384,16,build,,,28
+jetson/ppl_v2.sh: line 16: 44402 Killed                  "$bin" -m "$m" -f data/wiki.test.raw -c "$c" -b "$c" -ub 512 --chunks "$n" -ngl 99 -fa on -ctk "$k" -ctv "$v" > "$log" 2>&1
+qwen2.5-0.5b-instruct-q8_0,f16,f16,16384,16,build,,,19

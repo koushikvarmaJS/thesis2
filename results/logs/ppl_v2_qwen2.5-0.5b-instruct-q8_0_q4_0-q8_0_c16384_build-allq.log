@@ -1,0 +1,33 @@
+0.01.225.494 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.801.252 I cmn          init: llama threadpool init, n_threads = 6
+0.01.908.638 I 
+0.01.909.048 I system_info: n_threads = 6 (n_threads_batch = 6) / 6 | CUDA : ARCHS = 870 | USE_GRAPHS = 1 | FA_QUANTS = all | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.01.909.114 I perplexity: tokenizing the input ..
+0.03.216.393 I perplexity: tokenization took 1307.26 ms
+[New LWP 39500]
+[New LWP 39499]
+[New LWP 39498]
+[New LWP 39497]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+0x0000ffff8eda7b74 in __GI___wait4 (pid=39501, stat_loc=0x0, options=0, usage=0x0) at ../sysdeps/unix/sysv/linux/wait4.c:30
+warning: 30	../sysdeps/unix/sysv/linux/wait4.c: No such file or directory
+#0  0x0000ffff8eda7b74 in __GI___wait4 (pid=39501, stat_loc=0x0, options=0, usage=0x0) at ../sysdeps/unix/sysv/linux/wait4.c:30
+30	in ../sysdeps/unix/sysv/linux/wait4.c
+#1  0x0000ffff8e3934b4 in ggml_print_backtrace () from /home/koushik/thesis2/llama.cpp/build-allq/bin/libggml-base.so.0
+#2  0x0000ffff8e3a746c in ggml_uncaught_exception() () from /home/koushik/thesis2/llama.cpp/build-allq/bin/libggml-base.so.0
+#3  0x0000ffff8e19a570 in ?? () from /lib/aarch64-linux-gnu/libstdc++.so.6
+#4  0x0000ffff8e190e04 [PAC] in std::terminate() () from /lib/aarch64-linux-gnu/libstdc++.so.6
+#5  0x0000ffff8e19a908 [PAC] in __cxa_throw () from /lib/aarch64-linux-gnu/libstdc++.so.6
+#6  0x0000ffff8e19b030 [PAC] in operator new(unsigned long) () from /lib/aarch64-linux-gnu/libstdc++.so.6
+#7  0x0000ffff8eec39f8 [PAC] in std::vector<float, std::allocator<float> >::reserve(unsigned long) () from /home/koushik/thesis2/llama.cpp/build-allq/bin/libllama-perplexity-impl.so
+#8  0x0000ffff8eeb85f4 in perplexity(llama_context*, common_params const&, int) () from /home/koushik/thesis2/llama.cpp/build-allq/bin/libllama-perplexity-impl.so
+#9  0x0000ffff8eec0674 in llama_perplexity(int, char**) () from /home/koushik/thesis2/llama.cpp/build-allq/bin/libllama-perplexity-impl.so
+#10 0x0000ffff8ecf84c4 in __libc_start_call_main (main=main@entry=0xaaaaaffb06c0 <main>, argc=argc@entry=17, argv=argv@entry=0xffffe9899178) at ../sysdeps/nptl/libc_start_call_main.h:58
+warning: 58	../sysdeps/nptl/libc_start_call_main.h: No such file or directory
+#11 0x0000ffff8ecf8598 in __libc_start_main_impl (main=0xaaaaaffb06c0 <main>, argc=17, argv=0xffffe9899178, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=<optimized out>) at ../csu/libc-start.c:360
+warning: 360	../csu/libc-start.c: No such file or directory
+#12 0x0000aaaaaffb0730 in _start ()
+[Inferior 1 (process 39495) detached]
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc

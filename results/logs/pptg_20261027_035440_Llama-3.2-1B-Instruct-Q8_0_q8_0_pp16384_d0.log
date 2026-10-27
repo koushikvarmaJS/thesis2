@@ -1,0 +1,9 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 7485 MiB):
+  Device 0: Orin, compute capability 8.7, VMM: yes, VRAM: 7485 MiB
+llama-bench: benchmark 1/1: starting
+llama-bench: benchmark 1/1: warmup prompt run
+llama-bench: benchmark 1/1: prompt run 1/5
+llama-bench: benchmark 1/1: prompt run 2/5
+llama-bench: benchmark 1/1: prompt run 3/5
+llama-bench: benchmark 1/1: prompt run 4/5
+llama-bench: benchmark 1/1: prompt run 5/5

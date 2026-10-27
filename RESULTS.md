@@ -1,4 +1,56 @@
-# First Jetson results: KV-cache quantization energy (2026-10-19)
+# v2 results (2026-10-26/27): response to Prof. Lin's review
+
+Full write-up: `Jetson_KV_Report_v2.pdf` · plots: `plots_v2/` · raw data: `results/kv_2026102*.jsonl`, `results/pptg_*.jsonl`, `results/ppl_v2_*.csv`, `results/prof/`
+
+**Proposed main question:** On a memory-limited edge device, does compressing the KV cache reduce the energy of LLM inference, and if not, what does it buy?
+
+**Proposed falsifiable claim:** On a Jetson Orin Nano running llama.cpp, an 8-bit or 4-bit KV cache uses **more** energy per request than an f16 cache at every context length from 1K to 16K tokens, and the gap grows with context. The cause is compute, not memory traffic. The claim is refuted by any paired cell where a quantized cache is significantly cheaper than f16, or by f16 fitting everything the quantized caches fit.
+
+What changed since v1:
+- 5 paired rounds instead of 3
+- net *and* gross energy
+- per-rail power
+- FA-off baseline
+- llama-bench pp/tg split
+- concurrency at N = 1/2/4/8
+- Q4_K_M weights
+- nsys + ncu kernel profiling
+- K/V split perplexity
+- a fit test with Llama-3B
+
+| Finding (15W, 16K context) | Llama-1B q8_0 / q4_0 | Qwen-0.5B q8_0 / q4_0 |
+|---|---|---|
+| Net energy per request vs f16 | +15.9% / +12.6% | +18.0% / +16.0% |
+| Decode J/token vs f16 | +35.9% / +28.6% | +58.0% / +50.4% |
+| FA off (f16) vs FA on | +228% | +270% |
+
+- **Mechanism (nsys/ncu):** f16 decode attention runs on a tensor-core kernel that is limited by memory bandwidth (ncu: ~88% of memory bandwidth, ~10% SM). A quantized cache switches to the `flash_attn_ext_vec` kernel instead. That kernel has no tensor cores, keeps the SM 64–74% busy, and re-reads the cache once per query head (GQA). Per call at 16K: Llama 570 → 1201/1309 µs, Qwen 151 → 532/589 µs.
+- **Per-rail:** the extra energy is on the CPU+GPU rail (+61–90% during decode). The SoC/memory rail changes by only +5–32%, so the data does not show memory traffic going down.
+- **Concurrency (N = 2/4/8):** the penalty is present at every N. Llama f16 at N=8 (8 × 16K = 4.1 GiB of cache) does not fit, so only quantized caches can run it.
+- **Q4_K_M weights:** same pattern, +13–18% at 16K. The result does not depend on the weight format.
+- **Where quantization pays off (fit test):**
+  - Llama-3B: f16 fits only 16K, q8_0 fits up to 32K, q4_0 up to 64K (2468 J per request, 3.2 tok/s).
+  - Llama-1B: fits 64K in every format, and f16 stays cheapest.
+- **Perplexity, 8K:**
+  - Llama: f16 11.07 / q8_0 11.06 / q4_0 11.62.
+  - Qwen: 12.49 / 12.65 / **155.8**.
+  - K/V split: f16 K + q4 V = 12.53 (fine), q4 K + f16 V = 156.8. 4-bit *keys* break Qwen.
+
+Deviations from the plan:
+- Perplexity was run at 8K instead of 16K: llama-perplexity at 16K ran out of memory.
+- 128K was not run, because the prompt plus generated tokens exceeds Llama's trained context.
+- The Jetson froze and rebooted once during the deliberate N=8 out-of-memory check.
+
+**7W mode (v2, 5 rounds, sets A and B):**
+- **Quantization penalty:** all 48 quantized cells are significantly more expensive than f16, from +2.6% at 1K up to +28% per request at 16K.
+  - Llama: +21% (8-bit) / +18% (4-bit)
+  - Qwen: +28% / +21%
+- **7W against 15W:** 7W costs **+21–31% net** and **+60–73% gross** energy per request. Decode is 2.0–2.4× slower (408 vs 625 MHz) and power only falls from about 10 W to 7 W. This confirms v1's "race to idle".
+- **Idle correction:** the 7W grid started right after the power-mode reboot, and its start-of-set idle (3.68 W) was a transient: 3.03 W at the end, 2.92–3.05 W in set B. `analysis/analyze_v2.py` (`rebase_idle`) therefore subtracts the lower of the start/end idle readings. Gross energy is not affected.
+
+---
+
+# v1: first Jetson results: KV-cache quantization energy (2026-10-19)
 
 **Setup:**
 - Jetson Orin Nano Developer Kit, L4T R39.2 / Ubuntu 24.04, CUDA 13.2

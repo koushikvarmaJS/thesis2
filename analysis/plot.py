@@ -25,7 +25,7 @@ def load(paths):
     for p in paths:
         with open(p) as f:
             rows += [json.loads(line) for line in f if line.strip()]
-    return rows
+    return [r for r in rows if r.get('status', 'ok') == 'ok']  # v2 also records runs that failed
 
 
 def agg(rows, metric):

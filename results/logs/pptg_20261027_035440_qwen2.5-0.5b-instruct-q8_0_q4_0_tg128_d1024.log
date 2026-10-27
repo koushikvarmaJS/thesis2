@@ -1,0 +1,14 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 7485 MiB):
+  Device 0: Orin, compute capability 8.7, VMM: yes, VRAM: 7485 MiB
+llama-bench: benchmark 1/1: starting
+llama-bench: benchmark 1/1: warmup generation run
+llama-bench: benchmark 1/1: depth run 1/5
+llama-bench: benchmark 1/1: generation run 1/5
+llama-bench: benchmark 1/1: depth run 2/5 (cached)
+llama-bench: benchmark 1/1: generation run 2/5
+llama-bench: benchmark 1/1: depth run 3/5 (cached)
+llama-bench: benchmark 1/1: generation run 3/5
+llama-bench: benchmark 1/1: depth run 4/5 (cached)
+llama-bench: benchmark 1/1: generation run 4/5
+llama-bench: benchmark 1/1: depth run 5/5 (cached)
+llama-bench: benchmark 1/1: generation run 5/5

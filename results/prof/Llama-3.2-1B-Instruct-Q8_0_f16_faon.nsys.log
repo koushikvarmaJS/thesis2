@@ -1,0 +1,15 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 7485 MiB):
+  Device 0: Orin, compute capability 8.7, VMM: yes, VRAM: 7485 MiB
+| model                          |       size |     params | backend    | ngl |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --: | --------------: | -------------------: |
+| llama 1B Q8_0                  |   1.22 GiB |     1.24 B | CUDA       |  99 |   1 |   tg64 @ d16384 |         21.74 ± 0.00 |
+
+build: 7adf160 (1)
+Collecting data...
+Generating '/tmp/nsys-report-42d6.qdstrm'
+[1/1] [0%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [0%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [8%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [6%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [7%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [8%                          ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [==18%                       ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [====27%                     ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [=======37%                  ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [==========47%               ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [===========50%              ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [===========51%              ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [============54%             ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [============57%             ] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [========================100%] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep[1/1] [========================100%] Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep
+Generated:
+	/home/koushik/thesis2/results/prof/Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep
+Generating SQLite file results/prof/Llama-3.2-1B-Instruct-Q8_0_f16_faon.sqlite from results/prof/Llama-3.2-1B-Instruct-Q8_0_f16_faon.nsys-rep
+Processing [results/prof/Llama-3.2-1B-Instruct-Q8_0_f16_faon.sqlite] with [/opt/nvidia/nsight-systems/2025.6.3/host-linux-armv8/reports/cuda_gpu_kern_sum.py] to [results/prof/Llama-3.2-1B-Instruct-Q8_0_f16_faon_cuda_gpu_kern_sum.csv]... PROCESSED
+
