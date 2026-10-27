@@ -1,0 +1,7 @@
+model,kv_type,ctx,chunks,ppl,ppl_err
+Llama-3.2-1B-Instruct-Q8_0,f16,2048,20,12.0443,0.22851
+Llama-3.2-1B-Instruct-Q8_0,q8_0,2048,20,12.0489,0.22863
+Llama-3.2-1B-Instruct-Q8_0,q4_0,2048,20,12.7315,0.24174
+qwen2.5-0.5b-instruct-q8_0,f16,2048,20,13.0188,0.25327
+qwen2.5-0.5b-instruct-q8_0,q8_0,2048,20,13.1853,0.25715
+qwen2.5-0.5b-instruct-q8_0,q4_0,2048,20,100.3182,2.59948

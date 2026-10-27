@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+.venv/
+venv/
+# built or downloaded on the Jetson by jetson/setup.sh
+llama.cpp/
+models/
+models_extra/
+data/
+results_llama_commit.txt
