@@ -1,3 +1,58 @@
+# v3b results (2026-11-02): eviction on the Jetson
+
+Full write-up: `Jetson_KV_Report_v2.pdf` section 10.14 · plot `plots_v2/12_eviction.png` · raw data `results/evict_20261102_045556.jsonl` (Qwen), `evict_20261102_061220.jsonl` (Llama), `evict_*` scan files (tag 15W-evict-scan)
+
+The thesis methods, StreamingLLM and SnapKV, run through kvpress 0.5.3 on PyTorch 2.15 (CUDA 13.2). Models are fp16, with the same prompts, power meter and paired rounds as the llama.cpp sets (15W, 5 rounds, 128 generated tokens). The baseline is the same model in PyTorch without eviction.
+
+| Change in energy per request vs no eviction | 1K | 4K | 8K | 16K |
+|---|---|---|---|---|
+| Qwen-0.5B, StreamingLLM 50% / 75% | +1.4% / +1.3% | −2.8% / −4.5% | −45% / −47% | −27% / −47% |
+| Qwen-0.5B, SnapKV 50% / 75% | +1.7% / +1.7% | −1.1% / −2.7% | −45% / −46% | −26% / −46% |
+| Llama-1B, StreamingLLM 50% / 75% | +0.4% / −0.4% | −3.3% / −6.1% | −41% / −43% | (does not fit) |
+| Llama-1B, SnapKV 50% / 75% | +0.9% / +2.2% (n.s.) | −2.4% / −4.9% | −40% / −42% | (does not fit) |
+
+- **Eviction saves energy only where it makes decode faster.**
+  - PyTorch decode is launch-bound: about 14 tok/s (Qwen) and 17 tok/s (Llama) at any cache size up to 6K.
+  - Between 6K and 8K it drops in one step: Qwen 13.6 → 8.5 → 4.5 tok/s at 6K/8K/16K; Llama 16.1 → 6.0 at 6K/8K.
+  - Removing enough of the cache to stay under that step restores full speed and roughly halves the energy. Below the step, eviction changes energy by only a few percent.
+- **StreamingLLM ≈ SnapKV.** SnapKV's scoring adds prefill energy at 1K (+34% prefill), but the two end within about 2 points of each other per request.
+- **Caveats:**
+  - The PyTorch baseline is expensive: Qwen-0.5B at 16K uses 255 J per request here and 66 J in llama.cpp (f16 cache). Even with 75% removed (135 J), PyTorch uses about 2× llama.cpp without eviction.
+  - Accuracy with eviction is not measured on the Jetson.
+- **Crash on 2 Nov:** Llama-1B in fp16 at 16K ran out of the 8 GB of shared memory, and the board rebooted. Qwen's 100 runs were kept; Llama was rerun at 1K–8K.
+
+---
+
+# v3 results (2026-10-31 to 11-02): model size, model family, longer replies
+
+Full write-up: `Jetson_KV_Report_v2.pdf` sections 10.12 and 10.13 · plots `plots_v2/10_size_family.png`, `11_gen512.png` · raw data `results/kv_20261031_201343.jsonl`, `kv_20261101_232512.jsonl` (set H), `kv_20261102_001213.jsonl` (set I), `results/ppl_v3_*.csv`
+
+All six models use Q4_K_M weights at 15W, with 5 paired rounds (3 for the 512-token set).
+
+| At 16K, change vs f16 cache | per request, 8-bit / 4-bit | decode per token, 8-bit / 4-bit | 4-bit perplexity (8K) |
+|---|---|---|---|
+| Qwen2.5-0.5B | +17.9% / +16.0% | +60% / +52% | 12.8 → **179** |
+| Qwen2.5-1.5B | +14.2% / +12.5% | +49% / +44% | 8.7 → **6425** |
+| Qwen2.5-3B | +14.2% / +13.6% | +38% / +36% | 7.6 → **35** |
+| Llama-3.2-1B | +15.6% / +13.5% | +43% / +35% | +5.0% |
+| Llama-3.2-3B | +10.9% / +9.7% | +27% / +22% | +1.5% |
+| Gemma-3-1B | +3.6% / +3.5% | +3.5% / +3.4% | +2.7% (4K) |
+
+- **Same family, bigger model:** the penalty is smaller but has the same sign. A bigger model spends more of each step on its weights, which cost the same with any cache.
+- **Same size, different family:** the architecture decides.
+  - Gemma-3 keeps the full context in only 4 of its 26 layers; the other 22 use a 512-token window. Its cache is 86 MiB at 16K, not 419 MiB.
+  - So Gemma barely pays a penalty, and it barely saves memory either.
+- **Accuracy:** a 4-bit cache breaks every Qwen2.5 size, so this is a family property (2 KV heads plus a K bias), not a small-model quirk. 8-bit costs at most 1.5% on any model.
+- **Llama K/V split at 8K:** 4-bit keys only +4.6%, 4-bit values only +0.3%, 8-bit K + 4-bit V +0.3%.
+- **512-token replies:** the per-request penalty grows 1.7–2.2× (Qwen-0.5B 8-bit +18% → +39%, Llama-1B +16% → +29%). Gemma is unchanged.
+- **Significance:** 215 of 216 comparisons are significantly more expensive than f16. The exception is Qwen-3B, 4-bit, 1K, decode per token: +1.9%, not significant. None is cheaper.
+- **Crash on 31 Oct:**
+  - llama-server's default prompt cache in RAM (`--cache-ram 8192`) filled the 8 GB board during Llama-3B with an f16 cache, and the board rebooted.
+  - The fix is `--cache-ram 0`. Llama-3B was rerun from round 0.
+  - The cache never changed a measurement (`cache_prompt=false`).
+
+---
+
 # v2 results (2026-10-26/27): response to Prof. Lin's review
 
 Full write-up: `Jetson_KV_Report_v2.pdf` · plots: `plots_v2/` · raw data: `results/kv_2026102*.jsonl`, `results/pptg_*.jsonl`, `results/ppl_v2_*.csv`, `results/prof/`

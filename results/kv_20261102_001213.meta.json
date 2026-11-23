@@ -1,0 +1,44 @@
+{
+ "hostname": "ranjotsingh",
+ "l4t_release": "# R39 (release), REVISION: 2.0, GCID: 45755727, BOARD: generic, EABI: aarch64, DATE: Mon Jun  1 09:28:48 PM UTC 2026",
+ "jetpack": "",
+ "nvpmodel": "NV Power Mode: 15W",
+ "kernel": "6.8.12-1021-tegra",
+ "model_name": "NVIDIA Jetson Orin Nano Developer Kit",
+ "tag": "15W-gen512",
+ "gen": 512,
+ "kv_types": [
+  "f16",
+  "q8_0",
+  "q4_0"
+ ],
+ "contexts": [
+  4096,
+  16384
+ ],
+ "n_parallel": [
+  1
+ ],
+ "per_context_server": false,
+ "extra_args": [
+  "--cache-ram",
+  "0"
+ ],
+ "llama_bin": "/home/koushik/thesis2/llama.cpp/build/bin",
+ "rounds": 3,
+ "started": "20261102_001213",
+ "top_at_start": "PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n    320 systemd+  20   0   24300   7148   5960 S   8.3   0.1   0:10.14 systemd+\n    926 root      20   0  693716  14400  10024 S   8.3   0.2   1:22.59 Network+\n 100484 koushik   20   0   14352   4872   2808 R   8.3   0.1   0:00.03 top\n      1 root      20   0   23372  12628   7592 S   0.0   0.2   0:16.03 systemd\n      2 root      20   0       0      0      0 S   0.0   0.0   0:00.27 kthreadd",
+ "idle_w": {
+  "VDD_CPU_GPU_CV": 0.4663948156424581,
+  "VDD_IN": 3.0458686927374305,
+  "VDD_SOC": 1.011425966480447
+ },
+ "idle_w_end": {
+  "VDD_CPU_GPU_CV": 0.5256404861878453,
+  "VDD_IN": 3.2557348066298344,
+  "VDD_SOC": 1.083828685082873
+ },
+ "idle_mem_available_mb": 5552.0546875,
+ "power_backend": "sysfs-hwmon",
+ "finished": "2026-11-02T01:40:14.414580"
+}

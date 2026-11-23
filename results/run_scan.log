@@ -1,0 +1,84 @@
+{
+ "tag": "15W-evict-scan",
+ "gen": 128,
+ "methods": [
+  "f16"
+ ],
+ "contexts": [
+  2048,
+  3072,
+  5120,
+  6144,
+  12288
+ ],
+ "rounds": 3,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261102_063211",
+ "kvpress": "?",
+ "transformers": "4.57.6"
+}
+idle W: {'VDD_CPU_GPU_CV': 0.46, 'VDD_IN': 3.43, 'VDD_SOC': 1.01}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[1/15] Qwen2.5-0.5B-Instruct f16                ctx= 12288 decode 5.8 tok/s 0.932 J/tok  req 184.9 J  kv 145 MiB
+[2/15] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.7 tok/s 0.255 J/tok  req 33.6 J  kv 25 MiB
+[3/15] Qwen2.5-0.5B-Instruct f16                ctx=  3072 decode 13.6 tok/s 0.266 J/tok  req 36.4 J  kv 37 MiB
+[4/15] Qwen2.5-0.5B-Instruct f16                ctx=  5120 decode 13.7 tok/s 0.280 J/tok  req 41.6 J  kv 61 MiB
+[5/15] Qwen2.5-0.5B-Instruct f16                ctx=  6144 decode 13.7 tok/s 0.287 J/tok  req 44.7 J  kv 73 MiB
+[6/15] Qwen2.5-0.5B-Instruct f16                ctx=  6144 decode 13.7 tok/s 0.286 J/tok  req 44.6 J  kv 73 MiB
+[7/15] Qwen2.5-0.5B-Instruct f16                ctx=  3072 decode 13.7 tok/s 0.266 J/tok  req 36.2 J  kv 37 MiB
+[8/15] Qwen2.5-0.5B-Instruct f16                ctx=  5120 decode 13.7 tok/s 0.280 J/tok  req 41.6 J  kv 61 MiB
+[9/15] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.8 tok/s 0.255 J/tok  req 33.6 J  kv 25 MiB
+[10/15] Qwen2.5-0.5B-Instruct f16                ctx= 12288 decode 5.7 tok/s 0.932 J/tok  req 183.8 J  kv 145 MiB
+[11/15] Qwen2.5-0.5B-Instruct f16                ctx=  5120 decode 13.4 tok/s 0.283 J/tok  req 42.2 J  kv 61 MiB
+[12/15] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.7 tok/s 0.256 J/tok  req 33.7 J  kv 25 MiB
+[13/15] Qwen2.5-0.5B-Instruct f16                ctx= 12288 decode 5.8 tok/s 0.934 J/tok  req 183.4 J  kv 145 MiB
+[14/15] Qwen2.5-0.5B-Instruct f16                ctx=  3072 decode 13.7 tok/s 0.268 J/tok  req 36.6 J  kv 37 MiB
+[15/15] Qwen2.5-0.5B-Instruct f16                ctx=  6144 decode 13.5 tok/s 0.288 J/tok  req 44.9 J  kv 73 MiB
+idle W: {'VDD_CPU_GPU_CV': 0.46, 'VDD_IN': 3.08, 'VDD_SOC': 1.02}
+done -> /home/koushik/thesis2/results/evict_20261102_063211.jsonl
+{
+ "tag": "15W-evict-scan",
+ "gen": 128,
+ "methods": [
+  "f16"
+ ],
+ "contexts": [
+  2048,
+  3072,
+  5120,
+  6144
+ ],
+ "rounds": 3,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261102_063718",
+ "kvpress": "?",
+ "transformers": "4.57.6"
+}
+idle W: {'VDD_CPU_GPU_CV': 0.46, 'VDD_IN': 3.06, 'VDD_SOC': 1.02}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[1/12] Llama-3.2-1B-Instruct f16                ctx=  5120 decode 16.5 tok/s 0.508 J/tok  req 85.5 J  kv 164 MiB
+[2/12] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.8 tok/s 0.462 J/tok  req 63.6 J  kv 68 MiB
+[3/12] Llama-3.2-1B-Instruct f16                ctx=  3072 decode 17.4 tok/s 0.477 J/tok  req 69.6 J  kv 100 MiB
+[4/12] Llama-3.2-1B-Instruct f16                ctx=  6144 decode 16.1 tok/s 0.525 J/tok  req 87.4 J  kv 196 MiB
+[5/12] Llama-3.2-1B-Instruct f16                ctx=  3072 decode 17.3 tok/s 0.478 J/tok  req 69.7 J  kv 100 MiB
+[6/12] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.5 tok/s 0.467 J/tok  req 64.2 J  kv 68 MiB
+[7/12] Llama-3.2-1B-Instruct f16                ctx=  6144 decode 16.1 tok/s 0.525 J/tok  req 87.4 J  kv 196 MiB
+[8/12] Llama-3.2-1B-Instruct f16                ctx=  5120 decode 16.6 tok/s 0.510 J/tok  req 83.0 J  kv 164 MiB
+[9/12] Llama-3.2-1B-Instruct f16                ctx=  5120 decode 16.5 tok/s 0.511 J/tok  req 83.2 J  kv 164 MiB
+[10/12] Llama-3.2-1B-Instruct f16                ctx=  6144 decode 16.1 tok/s 0.527 J/tok  req 87.8 J  kv 196 MiB
+[11/12] Llama-3.2-1B-Instruct f16                ctx=  3072 decode 17.3 tok/s 0.481 J/tok  req 70.2 J  kv 100 MiB
+[12/12] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.6 tok/s 0.465 J/tok  req 64.1 J  kv 68 MiB
+idle W: {'VDD_CPU_GPU_CV': 0.5, 'VDD_IN': 3.15, 'VDD_SOC': 1.05}
+done -> /home/koushik/thesis2/results/evict_20261102_063718.jsonl
+scan done

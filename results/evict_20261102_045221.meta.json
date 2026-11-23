@@ -1,0 +1,31 @@
+{
+ "tag": "quick",
+ "gen": 128,
+ "methods": [
+  "f16",
+  "streamingllm@0.5",
+  "snapkv@0.5",
+  "streamingllm@0.75",
+  "snapkv@0.75"
+ ],
+ "contexts": [
+  1024,
+  4096
+ ],
+ "rounds": 1,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261102_045221",
+ "kvpress": "?",
+ "transformers": "4.57.6",
+ "idle_w": {
+  "VDD_CPU_GPU_CV": 0.5047312592592592,
+  "VDD_IN": 3.5064355555555555,
+  "VDD_SOC": 1.034187851851852
+ },
+ "idle_w_end": {
+  "VDD_CPU_GPU_CV": 0.523186962962963,
+  "VDD_IN": 3.650729481481481,
+  "VDD_SOC": 1.0696035555555556
+ }
+}

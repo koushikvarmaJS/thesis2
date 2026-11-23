@@ -116,7 +116,7 @@ def footer(canvas, doc):
     canvas.saveState()
     canvas.setFont('Arial', 7.5)
     canvas.setFillColor(MUTED)
-    canvas.drawString(18 * mm, 10 * mm, 'KV-cache quantization on Jetson Orin Nano: revised report (v2)')
+    canvas.drawString(18 * mm, 10 * mm, 'KV-cache compression on Jetson Orin Nano: report v3')
     canvas.drawRightString(192 * mm, 10 * mm, f'Page {doc.page}')
     canvas.restoreState()
 
@@ -124,7 +124,7 @@ def footer(canvas, doc):
 def build(story, out):
     doc = SimpleDocTemplate(str(out), pagesize=A4, leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=18 * mm,
-                            title='KV-Cache Quantization on Jetson Orin Nano (v2)',
+                            title='KV-Cache Compression on Jetson Orin Nano: Quantization and Eviction (v3)',
                             author='Koushik Bhupathiraju')
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     print('wrote', out)

@@ -1,0 +1,603 @@
+=== 2026-11-11 21:23:30 15W: M (restart) accuracy, PyTorch: eviction and QuantizedCache
+-> /home/koushik/thesis2/results/needle_hf_20261111_212330.jsonl
+Device set to use cuda:0
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+Qwen2.5-0.5B-Instruct ctx=1024 none                   30/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 streamingllm@0.5:qa    18/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 streamingllm@0.75:qa   6/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 snapkv@0.5:qa          8/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 snapkv@0.75:qa         8/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 streamingllm@0.5:ag    16/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 streamingllm@0.75:ag   6/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 snapkv@0.5:ag          12/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 snapkv@0.75:ag         9/30 correct
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Qwen2.5-0.5B-Instruct ctx=1024 quanto4                5/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 quanto2                0/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 hqq8                   30/30 correct
+Qwen2.5-0.5B-Instruct ctx=1024 hqq4                   8/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 none                   22/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 streamingllm@0.5:qa    17/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 streamingllm@0.75:qa   6/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 snapkv@0.5:qa          8/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 snapkv@0.75:qa         3/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 streamingllm@0.5:ag    13/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 streamingllm@0.75:ag   5/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 snapkv@0.5:ag          1/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 snapkv@0.75:ag         1/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 quanto4                4/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 quanto2                0/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 hqq8                   22/30 correct
+Qwen2.5-0.5B-Instruct ctx=4096 hqq4                   3/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 none                   22/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 streamingllm@0.5:qa    15/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 streamingllm@0.75:qa   5/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 snapkv@0.5:qa          8/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 snapkv@0.75:qa         4/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 streamingllm@0.5:ag    14/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 streamingllm@0.75:ag   6/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 snapkv@0.5:ag          2/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 snapkv@0.75:ag         1/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 quanto4                9/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 quanto2                0/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 hqq8                   22/30 correct
+Qwen2.5-0.5B-Instruct ctx=8192 hqq4                   2/30 correct
+Device set to use cuda:0
+Llama-3.2-1B-Instruct ctx=1024 none                   27/30 correct
+Llama-3.2-1B-Instruct ctx=1024 streamingllm@0.5:qa    17/30 correct
+Llama-3.2-1B-Instruct ctx=1024 streamingllm@0.75:qa   7/30 correct
+Llama-3.2-1B-Instruct ctx=1024 snapkv@0.5:qa          23/30 correct
+Llama-3.2-1B-Instruct ctx=1024 snapkv@0.75:qa         16/30 correct
+Llama-3.2-1B-Instruct ctx=1024 streamingllm@0.5:ag    15/30 correct
+Llama-3.2-1B-Instruct ctx=1024 streamingllm@0.75:ag   8/30 correct
+Llama-3.2-1B-Instruct ctx=1024 snapkv@0.5:ag          7/30 correct
+Llama-3.2-1B-Instruct ctx=1024 snapkv@0.75:ag         7/30 correct
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Llama-3.2-1B-Instruct ctx=1024 quanto4                27/30 correct
+Llama-3.2-1B-Instruct ctx=1024 quanto2                1/30 correct
+Llama-3.2-1B-Instruct ctx=1024 hqq8                   27/30 correct
+Llama-3.2-1B-Instruct ctx=1024 hqq4                   26/30 correct
+Llama-3.2-1B-Instruct ctx=4096 none                   25/30 correct
+Llama-3.2-1B-Instruct ctx=4096 streamingllm@0.5:qa    15/30 correct
+Llama-3.2-1B-Instruct ctx=4096 streamingllm@0.75:qa   5/30 correct
+Llama-3.2-1B-Instruct ctx=4096 snapkv@0.5:qa          24/30 correct
+Llama-3.2-1B-Instruct ctx=4096 snapkv@0.75:qa         26/30 correct
+Llama-3.2-1B-Instruct ctx=4096 streamingllm@0.5:ag    13/30 correct
+Llama-3.2-1B-Instruct ctx=4096 streamingllm@0.75:ag   4/30 correct
+Llama-3.2-1B-Instruct ctx=4096 snapkv@0.5:ag          6/30 correct
+Llama-3.2-1B-Instruct ctx=4096 snapkv@0.75:ag         4/30 correct
+Llama-3.2-1B-Instruct ctx=4096 quanto4                24/30 correct
+Llama-3.2-1B-Instruct ctx=4096 quanto2                0/30 correct
+Llama-3.2-1B-Instruct ctx=4096 hqq8                   25/30 correct
+Llama-3.2-1B-Instruct ctx=4096 hqq4                   25/30 correct
+Llama-3.2-1B-Instruct ctx=8192 none                   26/30 correct
+Llama-3.2-1B-Instruct ctx=8192 streamingllm@0.5:qa    16/30 correct
+Llama-3.2-1B-Instruct ctx=8192 streamingllm@0.75:qa   6/30 correct
+Llama-3.2-1B-Instruct ctx=8192 snapkv@0.5:qa          26/30 correct
+Llama-3.2-1B-Instruct ctx=8192 snapkv@0.75:qa         25/30 correct
+Llama-3.2-1B-Instruct ctx=8192 streamingllm@0.5:ag    15/30 correct
+Llama-3.2-1B-Instruct ctx=8192 streamingllm@0.75:ag   6/30 correct
+Llama-3.2-1B-Instruct ctx=8192 snapkv@0.5:ag          4/30 correct
+Llama-3.2-1B-Instruct ctx=8192 snapkv@0.75:ag         1/30 correct
+Llama-3.2-1B-Instruct ctx=8192 quanto4                26/30 correct
+Llama-3.2-1B-Instruct ctx=8192 quanto2                1/30 correct
+Llama-3.2-1B-Instruct ctx=8192 hqq8                   26/30 correct
+Llama-3.2-1B-Instruct ctx=8192 hqq4                   25/30 correct
+
+=== 2026-11-11 22:55:05 15W: N PyTorch QuantizedCache energy vs f16 and eviction: 1K-8K, 3 rounds
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    784 avahi     20   0    9188   1940    928 S   8.3   0.0   2:22.37 avahi-d+
+  13593 koushik   20   0   14352   4876   2812 R   8.3   0.1   0:00.04 top
+      1 root      20   0   23380   8792   3744 S   0.0   0.1   0:09.31 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.03 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+{
+ "tag": "15W-pytq",
+ "gen": 128,
+ "methods": [
+  "f16",
+  "quanto4",
+  "quanto2",
+  "hqq8",
+  "hqq4",
+  "snapkv@0.5"
+ ],
+ "contexts": [
+  1024,
+  4096,
+  8192
+ ],
+ "rounds": 3,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261111_225532",
+ "kvpress": "?",
+ "transformers": "4.57.6"
+}
+idle W: {'VDD_CPU_GPU_CV': 0.49, 'VDD_IN': 3.09, 'VDD_SOC': 1.02}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[1/108] Qwen2.5-0.5B-Instruct f16                ctx=  4096 decode 13.7 tok/s 0.299 J/tok  req 43.6 J  kv 49 MiB
+[2/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  4096 decode 10.7 tok/s 0.366 J/tok  req 51.5 J  kv 9 MiB
+[3/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  1024 decode 11.0 tok/s 0.310 J/tok  req 40.1 J  kv 3 MiB
+[4/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  1024 decode 10.4 tok/s 0.320 J/tok  req 43.6 J  kv 5 MiB
+[5/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  8192 decode 7.1 tok/s 0.832 J/tok  req 140.2 J  kv 16 MiB
+[6/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  4096 decode 12.9 tok/s 0.296 J/tok  req 42.6 J  kv 25 MiB
+[7/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  8192 decode 7.1 tok/s 0.846 J/tok  req 142.0 J  kv 28 MiB
+[8/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  4096 decode 10.5 tok/s 0.385 J/tok  req 60.0 J  kv 15 MiB
+[9/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  1024 decode 13.1 tok/s 0.276 J/tok  req 35.9 J  kv 7 MiB
+[10/108] Qwen2.5-0.5B-Instruct f16                ctx=  1024 decode 13.9 tok/s 0.271 J/tok  req 35.1 J  kv 13 MiB
+[11/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  8192 decode 7.1 tok/s 0.857 J/tok  req 147.7 J  kv 52 MiB
+[12/108] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.5 tok/s 0.719 J/tok  req 124.8 J  kv 97 MiB
+[13/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  8192 decode 7.0 tok/s 0.885 J/tok  req 157.3 J  kv 28 MiB
+[14/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  1024 decode 11.2 tok/s 0.310 J/tok  req 40.2 J  kv 5 MiB
+[15/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  4096 decode 11.9 tok/s 0.364 J/tok  req 54.8 J  kv 27 MiB
+[16/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  1024 decode 11.8 tok/s 0.300 J/tok  req 40.0 J  kv 8 MiB
+[17/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.8 tok/s 0.304 J/tok  req 70.2 J  kv 49 MiB
+[18/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.366 J/tok  req 51.2 J  kv 15 MiB
+[19/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  4096 decode 13.1 tok/s 0.292 J/tok  req 42.1 J  kv 25 MiB
+[20/108] Qwen2.5-0.5B-Instruct f16                ctx=  4096 decode 13.8 tok/s 0.300 J/tok  req 42.5 J  kv 49 MiB
+[21/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  8192 decode 7.0 tok/s 0.882 J/tok  req 156.9 J  kv 28 MiB
+[22/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  4096 decode 10.5 tok/s 0.385 J/tok  req 60.1 J  kv 15 MiB
+[23/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  1024 decode 13.2 tok/s 0.275 J/tok  req 35.8 J  kv 7 MiB
+[24/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  8192 decode 7.1 tok/s 0.832 J/tok  req 140.4 J  kv 16 MiB
+[25/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  8192 decode 6.9 tok/s 0.865 J/tok  req 148.7 J  kv 52 MiB
+[26/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  1024 decode 11.2 tok/s 0.310 J/tok  req 40.2 J  kv 3 MiB
+[27/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  4096 decode 11.2 tok/s 0.364 J/tok  req 51.0 J  kv 9 MiB
+[28/108] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.5 tok/s 0.724 J/tok  req 125.2 J  kv 97 MiB
+[29/108] Qwen2.5-0.5B-Instruct f16                ctx=  1024 decode 13.8 tok/s 0.273 J/tok  req 35.3 J  kv 13 MiB
+[30/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  1024 decode 10.5 tok/s 0.322 J/tok  req 43.9 J  kv 5 MiB
+[31/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  1024 decode 11.2 tok/s 0.306 J/tok  req 39.5 J  kv 5 MiB
+[32/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  4096 decode 12.1 tok/s 0.362 J/tok  req 54.5 J  kv 27 MiB
+[33/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  1024 decode 12.1 tok/s 0.300 J/tok  req 40.0 J  kv 8 MiB
+[34/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.365 J/tok  req 51.1 J  kv 15 MiB
+[35/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 13.1 tok/s 0.303 J/tok  req 69.9 J  kv 49 MiB
+[36/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  8192 decode 7.1 tok/s 0.843 J/tok  req 141.6 J  kv 28 MiB
+[37/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  1024 decode 10.5 tok/s 0.323 J/tok  req 43.9 J  kv 5 MiB
+[38/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  4096 decode 13.1 tok/s 0.294 J/tok  req 42.2 J  kv 25 MiB
+[39/108] Qwen2.5-0.5B-Instruct f16                ctx=  1024 decode 13.7 tok/s 0.271 J/tok  req 35.1 J  kv 13 MiB
+[40/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  8192 decode 7.1 tok/s 0.832 J/tok  req 140.3 J  kv 16 MiB
+[41/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  4096 decode 10.5 tok/s 0.385 J/tok  req 60.2 J  kv 15 MiB
+[42/108] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.5 tok/s 0.723 J/tok  req 125.1 J  kv 97 MiB
+[43/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 13.1 tok/s 0.304 J/tok  req 70.3 J  kv 49 MiB
+[44/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  1024 decode 12.1 tok/s 0.300 J/tok  req 40.0 J  kv 8 MiB
+[45/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  8192 decode 7.1 tok/s 0.859 J/tok  req 147.7 J  kv 52 MiB
+[46/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  1024 decode 11.3 tok/s 0.308 J/tok  req 39.8 J  kv 5 MiB
+[47/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  8192 decode 7.1 tok/s 0.847 J/tok  req 142.0 J  kv 28 MiB
+[48/108] Qwen2.5-0.5B-Instruct hqq8               ctx=  4096 decode 12.1 tok/s 0.362 J/tok  req 54.7 J  kv 27 MiB
+[49/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  1024 decode 11.2 tok/s 0.307 J/tok  req 39.6 J  kv 3 MiB
+[50/108] Qwen2.5-0.5B-Instruct quanto2            ctx=  4096 decode 11.2 tok/s 0.368 J/tok  req 51.5 J  kv 9 MiB
+[51/108] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  1024 decode 13.2 tok/s 0.276 J/tok  req 35.9 J  kv 7 MiB
+[52/108] Qwen2.5-0.5B-Instruct f16                ctx=  4096 decode 13.8 tok/s 0.300 J/tok  req 42.5 J  kv 49 MiB
+[53/108] Qwen2.5-0.5B-Instruct hqq4               ctx=  8192 decode 7.0 tok/s 0.884 J/tok  req 157.1 J  kv 28 MiB
+[54/108] Qwen2.5-0.5B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.371 J/tok  req 51.9 J  kv 15 MiB
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[55/108] Llama-3.2-1B-Instruct hqq8               ctx=  1024 decode 15.7 tok/s 0.488 J/tok  req 68.4 J  kv 21 MiB
+[56/108] Llama-3.2-1B-Instruct hqq4               ctx=  8192 decode 4.3 tok/s 1.498 J/tok  req 278.2 J  kv 76 MiB
+[57/108] Llama-3.2-1B-Instruct hqq8               ctx=  8192 decode 4.4 tok/s 1.450 J/tok  req 256.2 J  kv 140 MiB
+[58/108] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.116 J/tok  req 199.4 J  kv 260 MiB
+[59/108] Llama-3.2-1B-Instruct quanto2            ctx=  8192 decode 4.5 tok/s 1.384 J/tok  req 236.8 J  kv 44 MiB
+[60/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  4096 decode 15.5 tok/s 0.479 J/tok  req 74.8 J  kv 68 MiB
+[61/108] Llama-3.2-1B-Instruct quanto4            ctx=  8192 decode 4.4 tok/s 1.423 J/tok  req 241.2 J  kv 76 MiB
+[62/108] Llama-3.2-1B-Instruct quanto4            ctx=  1024 decode 15.0 tok/s 0.495 J/tok  req 65.1 J  kv 13 MiB
+[63/108] Llama-3.2-1B-Instruct hqq8               ctx=  4096 decode 11.3 tok/s 0.663 J/tok  req 106.6 J  kv 72 MiB
+[64/108] Llama-3.2-1B-Instruct quanto2            ctx=  1024 decode 15.0 tok/s 0.491 J/tok  req 64.7 J  kv 9 MiB
+[65/108] Llama-3.2-1B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.656 J/tok  req 97.8 J  kv 40 MiB
+[66/108] Llama-3.2-1B-Instruct f16                ctx=  4096 decode 17.0 tok/s 0.496 J/tok  req 76.4 J  kv 132 MiB
+[67/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  1024 decode 16.1 tok/s 0.450 J/tok  req 59.7 J  kv 20 MiB
+[68/108] Llama-3.2-1B-Instruct quanto2            ctx=  4096 decode 11.5 tok/s 0.646 J/tok  req 96.7 J  kv 24 MiB
+[69/108] Llama-3.2-1B-Instruct hqq4               ctx=  1024 decode 14.0 tok/s 0.509 J/tok  req 70.6 J  kv 13 MiB
+[70/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.7 tok/s 0.505 J/tok  req 120.5 J  kv 132 MiB
+[71/108] Llama-3.2-1B-Instruct hqq4               ctx=  4096 decode 10.9 tok/s 0.696 J/tok  req 119.3 J  kv 40 MiB
+[72/108] Llama-3.2-1B-Instruct f16                ctx=  1024 decode 17.9 tok/s 0.445 J/tok  req 58.7 J  kv 36 MiB
+[73/108] Llama-3.2-1B-Instruct hqq4               ctx=  4096 decode 10.9 tok/s 0.697 J/tok  req 119.7 J  kv 40 MiB
+[74/108] Llama-3.2-1B-Instruct hqq8               ctx=  1024 decode 16.0 tok/s 0.490 J/tok  req 66.6 J  kv 21 MiB
+[75/108] Llama-3.2-1B-Instruct f16                ctx=  1024 decode 17.9 tok/s 0.445 J/tok  req 58.7 J  kv 36 MiB
+[76/108] Llama-3.2-1B-Instruct quanto2            ctx=  8192 decode 4.5 tok/s 1.386 J/tok  req 237.3 J  kv 44 MiB
+[77/108] Llama-3.2-1B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.654 J/tok  req 97.4 J  kv 40 MiB
+[78/108] Llama-3.2-1B-Instruct quanto4            ctx=  1024 decode 15.0 tok/s 0.496 J/tok  req 65.3 J  kv 13 MiB
+[79/108] Llama-3.2-1B-Instruct quanto2            ctx=  1024 decode 14.8 tok/s 0.495 J/tok  req 65.3 J  kv 9 MiB
+[80/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  1024 decode 16.2 tok/s 0.450 J/tok  req 59.6 J  kv 20 MiB
+[81/108] Llama-3.2-1B-Instruct quanto2            ctx=  4096 decode 11.5 tok/s 0.645 J/tok  req 96.6 J  kv 24 MiB
+[82/108] Llama-3.2-1B-Instruct hqq8               ctx=  8192 decode 4.4 tok/s 1.455 J/tok  req 257.3 J  kv 140 MiB
+[83/108] Llama-3.2-1B-Instruct quanto4            ctx=  8192 decode 4.3 tok/s 1.424 J/tok  req 241.3 J  kv 76 MiB
+[84/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  4096 decode 15.5 tok/s 0.479 J/tok  req 74.9 J  kv 68 MiB
+[85/108] Llama-3.2-1B-Instruct hqq4               ctx=  8192 decode 4.3 tok/s 1.512 J/tok  req 279.6 J  kv 76 MiB
+[86/108] Llama-3.2-1B-Instruct hqq8               ctx=  4096 decode 11.3 tok/s 0.663 J/tok  req 106.7 J  kv 72 MiB
+[87/108] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.120 J/tok  req 200.1 J  kv 260 MiB
+[88/108] Llama-3.2-1B-Instruct hqq4               ctx=  1024 decode 14.2 tok/s 0.507 J/tok  req 70.3 J  kv 13 MiB
+[89/108] Llama-3.2-1B-Instruct f16                ctx=  4096 decode 17.0 tok/s 0.495 J/tok  req 76.3 J  kv 132 MiB
+[90/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.8 tok/s 0.506 J/tok  req 120.8 J  kv 132 MiB
+[91/108] Llama-3.2-1B-Instruct quanto2            ctx=  8192 decode 4.5 tok/s 1.389 J/tok  req 237.6 J  kv 44 MiB
+[92/108] Llama-3.2-1B-Instruct hqq8               ctx=  1024 decode 16.0 tok/s 0.488 J/tok  req 66.3 J  kv 21 MiB
+[93/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  1024 decode 16.1 tok/s 0.449 J/tok  req 59.5 J  kv 20 MiB
+[94/108] Llama-3.2-1B-Instruct hqq4               ctx=  1024 decode 14.2 tok/s 0.506 J/tok  req 70.3 J  kv 13 MiB
+[95/108] Llama-3.2-1B-Instruct quanto4            ctx=  4096 decode 11.2 tok/s 0.656 J/tok  req 97.9 J  kv 40 MiB
+[96/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  4096 decode 15.5 tok/s 0.480 J/tok  req 75.1 J  kv 68 MiB
+[97/108] Llama-3.2-1B-Instruct quanto4            ctx=  1024 decode 15.0 tok/s 0.494 J/tok  req 65.1 J  kv 13 MiB
+[98/108] Llama-3.2-1B-Instruct hqq4               ctx=  4096 decode 10.9 tok/s 0.697 J/tok  req 119.7 J  kv 40 MiB
+[99/108] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.121 J/tok  req 200.3 J  kv 260 MiB
+[100/108] Llama-3.2-1B-Instruct hqq8               ctx=  4096 decode 11.3 tok/s 0.664 J/tok  req 106.7 J  kv 72 MiB
+[101/108] Llama-3.2-1B-Instruct quanto2            ctx=  1024 decode 15.0 tok/s 0.492 J/tok  req 64.8 J  kv 9 MiB
+[102/108] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.7 tok/s 0.504 J/tok  req 120.8 J  kv 132 MiB
+[103/108] Llama-3.2-1B-Instruct hqq8               ctx=  8192 decode 4.4 tok/s 1.460 J/tok  req 258.0 J  kv 140 MiB
+[104/108] Llama-3.2-1B-Instruct f16                ctx=  4096 decode 17.0 tok/s 0.496 J/tok  req 76.3 J  kv 132 MiB
+[105/108] Llama-3.2-1B-Instruct hqq4               ctx=  8192 decode 4.2 tok/s 1.512 J/tok  req 279.8 J  kv 76 MiB
+[106/108] Llama-3.2-1B-Instruct f16                ctx=  1024 decode 18.1 tok/s 0.445 J/tok  req 58.6 J  kv 36 MiB
+[107/108] Llama-3.2-1B-Instruct quanto2            ctx=  4096 decode 11.5 tok/s 0.646 J/tok  req 96.6 J  kv 24 MiB
+[108/108] Llama-3.2-1B-Instruct quanto4            ctx=  8192 decode 4.4 tok/s 1.419 J/tok  req 240.9 J  kv 76 MiB
+idle W: {'VDD_CPU_GPU_CV': 0.5, 'VDD_IN': 3.14, 'VDD_SOC': 1.06}
+done -> /home/koushik/thesis2/results/evict_20261111_225532.jsonl
+
+=== 2026-11-11 23:30:42 15W: O profile of the PyTorch decode step, 4K-8K
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  13714 koushik   20   0   14352   4752   2676 R  15.4   0.1   0:00.04 top
+      1 root      20   0   23380   8776   3728 S   0.0   0.1   0:09.36 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.03 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-11 23:31:29 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:31:30 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-11 23:31:33 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:31:34 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 wall 70.3 ms/step  gpu 0.0 ms/step  cache 25 MiB  top gpu: []
+   top cpu: [('aten::mul', 8.895, 220.0), ('aten::copy_', 7.309, 102.0), ('aten::mm', 6.969, 97.0), ('aten::add', 5.719, 145.0), ('aten::addmm', 5.243, 72.0)]
+USDT:2026-11-11 23:31:41 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:31:42 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 wall 71.3 ms/step  gpu 0.0 ms/step  cache 49 MiB  top gpu: []
+   top cpu: [('aten::mul', 9.049, 220.0), ('aten::mm', 7.245, 97.0), ('aten::copy_', 7.06, 102.0), ('aten::add', 5.812, 145.0), ('aten::addmm', 5.34, 72.0)]
+USDT:2026-11-11 23:31:50 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:31:51 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 wall 70.5 ms/step  gpu 0.0 ms/step  cache 61 MiB  top gpu: []
+   top cpu: [('aten::mul', 8.906, 220.0), ('aten::mm', 7.162, 97.0), ('aten::copy_', 6.766, 102.0), ('aten::add', 5.74, 145.0), ('aten::addmm', 5.253, 72.0)]
+USDT:2026-11-11 23:31:59 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:32:00 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 wall 71.1 ms/step  gpu 0.0 ms/step  cache 73 MiB  top gpu: []
+   top cpu: [('aten::mul', 9.033, 220.0), ('aten::mm', 7.255, 97.0), ('aten::copy_', 6.819, 102.0), ('aten::add', 5.838, 145.0), ('aten::addmm', 5.318, 72.0)]
+USDT:2026-11-11 23:32:08 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:32:09 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6656 wall 71.1 ms/step  gpu 0.0 ms/step  cache 79 MiB  top gpu: []
+   top cpu: [('aten::mul', 8.965, 220.0), ('aten::mm', 7.219, 97.0), ('aten::copy_', 6.808, 102.0), ('aten::add', 5.777, 145.0), ('aten::addmm', 5.3, 72.0)]
+USDT:2026-11-11 23:32:18 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:32:18 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 wall 71.3 ms/step  gpu 0.0 ms/step  cache 85 MiB  top gpu: []
+   top cpu: [('aten::mul', 9.056, 220.0), ('aten::mm', 7.239, 97.0), ('aten::copy_', 6.795, 102.0), ('aten::add', 5.784, 145.0), ('aten::addmm', 5.35, 72.0)]
+USDT:2026-11-11 23:32:27 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:32:28 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7680 wall 70.7 ms/step  gpu 0.0 ms/step  cache 91 MiB  top gpu: []
+   top cpu: [('aten::mul', 8.975, 220.0), ('aten::mm', 7.172, 97.0), ('aten::copy_', 6.774, 102.0), ('aten::add', 5.745, 145.0), ('aten::addmm', 5.253, 72.0)]
+USDT:2026-11-11 23:32:37 13716:13716 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:32:38 13716:13716 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  8192 wall 70.8 ms/step  gpu 0.0 ms/step  cache 97 MiB  top gpu: []
+   top cpu: [('aten::mul', 8.949, 220.0), ('aten::mm', 7.183, 97.0), ('aten::copy_', 6.863, 102.0), ('aten::add', 5.771, 145.0), ('aten::addmm', 5.268, 72.0)]
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/linear.py:134: UserWarning: nvmlDeviceGetComputeRunningProcesses failed; omitting per-process memory info from CUDA out-of-memory messages. This is expected on platforms with partial NVML support such as Tegra/Jetson. (Triggered internally at /__w/pytorch/pytorch/c10/cuda/CUDACachingAllocator.cpp:1492.)
+  return F.linear(input, self.weight, self.bias)
+Traceback (most recent call last):
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 91, in <module>
+    main()
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 81, in main
+    **run(model, ids_all[:c][None].cuda(), args.steps, args.prof_steps)}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 158, in no_grad
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 28, in run
+    out = model(ids, past_key_values=cache, use_cache=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 463, in forward
+    logits = self.lm_head(hidden_states[:, slice_indices, :])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.48 GiB. GPU 0 has a total capacity of 7.31 GiB of which 3.20 GiB is free. Of the allocated memory 1.09 GiB is allocated by PyTorch, and 121.77 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-11 23:33:53 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:33:53 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-11 23:33:57 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:33:57 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 wall 54.1 ms/step  gpu 0.0 ms/step  cache 65 MiB  top gpu: []
+   top cpu: [('aten::copy_', 9.835, 70.0), ('aten::mm', 8.2, 113.0), ('aten::mul', 6.095, 148.0), ('aten::add', 3.891, 97.0), ('aten::cat', 2.88, 65.0)]
+USDT:2026-11-11 23:34:04 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:05 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 wall 56.7 ms/step  gpu 0.0 ms/step  cache 129 MiB  top gpu: []
+   top cpu: [('aten::copy_', 9.861, 70.0), ('aten::mm', 8.247, 113.0), ('aten::mul', 6.092, 148.0), ('aten::add', 3.887, 97.0), ('aten::cat', 2.868, 65.0)]
+USDT:2026-11-11 23:34:12 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:13 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 wall 59.8 ms/step  gpu 0.0 ms/step  cache 161 MiB  top gpu: []
+   top cpu: [('aten::copy_', 10.127, 70.0), ('aten::mm', 8.69, 113.0), ('aten::mul', 6.421, 148.0), ('aten::add', 4.065, 97.0), ('aten::cat', 3.036, 65.0)]
+USDT:2026-11-11 23:34:21 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:22 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 wall 60.1 ms/step  gpu 0.0 ms/step  cache 193 MiB  top gpu: []
+   top cpu: [('aten::copy_', 9.932, 70.0), ('aten::mm', 8.245, 113.0), ('aten::mul', 6.07, 148.0), ('aten::add', 3.859, 97.0), ('aten::cat', 2.87, 65.0)]
+USDT:2026-11-11 23:34:31 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:31 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6656 wall 60.7 ms/step  gpu 0.0 ms/step  cache 209 MiB  top gpu: []
+   top cpu: [('aten::copy_', 9.945, 70.0), ('aten::mm', 8.221, 113.0), ('aten::mul', 6.043, 148.0), ('aten::add', 3.865, 97.0), ('aten::cat', 2.842, 65.0)]
+USDT:2026-11-11 23:34:40 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:40 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 wall 61.6 ms/step  gpu 0.0 ms/step  cache 225 MiB  top gpu: []
+   top cpu: [('aten::copy_', 9.87, 70.0), ('aten::mm', 8.25, 113.0), ('aten::mul', 6.107, 148.0), ('aten::add', 3.902, 97.0), ('aten::cat', 2.858, 65.0)]
+USDT:2026-11-11 23:34:50 13742:13742 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:34:51 13742:13742 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7680 wall 62.5 ms/step  gpu 0.0 ms/step  cache 241 MiB  top gpu: []
+   top cpu: [('aten::mm', 9.41, 113.0), ('aten::copy_', 9.277, 70.0), ('aten::mul', 6.95, 148.0), ('aten::add', 4.415, 97.0), ('aten::cat', 3.258, 65.0)]
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/linear.py:134: UserWarning: nvmlDeviceGetComputeRunningProcesses failed; omitting per-process memory info from CUDA out-of-memory messages. This is expected on platforms with partial NVML support such as Tegra/Jetson. (Triggered internally at /__w/pytorch/pytorch/c10/cuda/CUDACachingAllocator.cpp:1492.)
+  return F.linear(input, self.weight, self.bias)
+Traceback (most recent call last):
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 91, in <module>
+    main()
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 81, in main
+    **run(model, ids_all[:c][None].cuda(), args.steps, args.prof_steps)}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 158, in no_grad
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 28, in run
+    out = model(ids, past_key_values=cache, use_cache=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 473, in forward
+    logits = self.lm_head(hidden_states[:, slice_indices, :])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 7.31 GiB of which 1.87 GiB is free. Of the allocated memory 2.58 GiB is allocated by PyTorch, and 193.81 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-11 23:35:57 13778:13778 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:35:57 13778:13778 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-11 23:36:07 13778:13778 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-11 23:36:08 13778:13778 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 wall 86.8 ms/step  gpu 0.0 ms/step  cache 49 MiB  top gpu: []
+   top cpu: [('aten::mul', 10.201, 244.0), ('aten::copy_', 9.312, 175.0), ('aten::mm', 7.22, 97.0), ('aten::add', 6.876, 169.0), ('aten::bmm', 5.711, 49.0)]
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+NvMapMemAllocInternalTagged failed: error 12
+Failed ioctlCmd: 1075858947
+NvMapMemHandleAlloc failed: error 12
+/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py:114: UserWarning: nvmlDeviceGetComputeRunningProcesses failed; omitting per-process memory info from CUDA out-of-memory messages. This is expected on platforms with partial NVML support such as Tegra/Jetson. (Triggered internally at /__w/pytorch/pytorch/c10/cuda/CUDACachingAllocator.cpp:1492.)
+  attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query.dtype)
+Traceback (most recent call last):
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 91, in <module>
+    main()
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 81, in main
+    **run(model, ids_all[:c][None].cuda(), args.steps, args.prof_steps)}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 158, in no_grad
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/thesis2/jetson/profile_step.py", line 28, in run
+    out = model(ids, past_key_values=cache, use_cache=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 449, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 384, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 234, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 169, in forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/koushik/evict-venv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 114, in eager_attention_forward
+    attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query.dtype)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1008.00 MiB. GPU 0 has a total capacity of 7.31 GiB of which 53.27 MiB is free. Of the allocated memory 4.03 GiB is allocated by PyTorch, and 1012.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+=== 2026-11-11 23:36:55 15W: P eviction at the T4 thesis settings: 2K and 8K prompts, 50 tokens, 50% eviction, 5 rounds
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  13809 koushik   20   0   14352   5188   3124 R   7.7   0.1   0:00.05 top
+      1 root      20   0   23380   6224   1176 S   0.0   0.1   0:09.41 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.04 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+{
+ "tag": "15W-t4match",
+ "gen": 50,
+ "methods": [
+  "f16",
+  "streamingllm@0.5",
+  "snapkv@0.5"
+ ],
+ "contexts": [
+  2048,
+  8192
+ ],
+ "rounds": 5,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261111_233728",
+ "kvpress": "?",
+ "transformers": "4.57.6"
+}
+idle W: {'VDD_CPU_GPU_CV': 0.46, 'VDD_IN': 3.06, 'VDD_SOC': 1.01}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[1/60] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.5 tok/s 0.302 J/tok  req 16.9 J  kv 25 MiB
+[2/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  2048 decode 12.8 tok/s 0.294 J/tok  req 15.7 J  kv 13 MiB
+[3/60] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.5 tok/s 0.726 J/tok  req 68.9 J  kv 97 MiB
+[4/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  8192 decode 12.7 tok/s 0.325 J/tok  req 46.3 J  kv 49 MiB
+[5/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.5 tok/s 0.325 J/tok  req 47.6 J  kv 49 MiB
+[6/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  2048 decode 12.7 tok/s 0.298 J/tok  req 16.3 J  kv 13 MiB
+[7/60] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.3 tok/s 0.296 J/tok  req 15.8 J  kv 25 MiB
+[8/60] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.6 tok/s 0.718 J/tok  req 68.7 J  kv 97 MiB
+[9/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  2048 decode 12.6 tok/s 0.300 J/tok  req 16.3 J  kv 13 MiB
+[10/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  2048 decode 12.6 tok/s 0.299 J/tok  req 16.0 J  kv 13 MiB
+[11/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.6 tok/s 0.326 J/tok  req 47.6 J  kv 49 MiB
+[12/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  8192 decode 12.8 tok/s 0.326 J/tok  req 46.5 J  kv 49 MiB
+[13/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  8192 decode 12.7 tok/s 0.326 J/tok  req 46.4 J  kv 49 MiB
+[14/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.7 tok/s 0.325 J/tok  req 47.6 J  kv 49 MiB
+[15/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  2048 decode 12.9 tok/s 0.298 J/tok  req 16.2 J  kv 13 MiB
+[16/60] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.6 tok/s 0.722 J/tok  req 68.9 J  kv 97 MiB
+[17/60] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.4 tok/s 0.296 J/tok  req 15.9 J  kv 25 MiB
+[18/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  2048 decode 12.8 tok/s 0.297 J/tok  req 15.9 J  kv 13 MiB
+[19/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.5 tok/s 0.328 J/tok  req 47.7 J  kv 49 MiB
+[20/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  2048 decode 12.7 tok/s 0.299 J/tok  req 16.3 J  kv 13 MiB
+[21/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  8192 decode 12.7 tok/s 0.326 J/tok  req 46.5 J  kv 49 MiB
+[22/60] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.4 tok/s 0.296 J/tok  req 15.9 J  kv 25 MiB
+[23/60] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.6 tok/s 0.720 J/tok  req 68.8 J  kv 97 MiB
+[24/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  2048 decode 12.7 tok/s 0.298 J/tok  req 16.0 J  kv 13 MiB
+[25/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  8192 decode 12.6 tok/s 0.327 J/tok  req 46.5 J  kv 49 MiB
+[26/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  2048 decode 12.8 tok/s 0.298 J/tok  req 16.3 J  kv 13 MiB
+[27/60] Qwen2.5-0.5B-Instruct f16                ctx=  8192 decode 8.5 tok/s 0.728 J/tok  req 69.2 J  kv 97 MiB
+[28/60] Qwen2.5-0.5B-Instruct snapkv@0.5         ctx=  8192 decode 12.7 tok/s 0.327 J/tok  req 47.8 J  kv 49 MiB
+[29/60] Qwen2.5-0.5B-Instruct f16                ctx=  2048 decode 13.3 tok/s 0.296 J/tok  req 15.9 J  kv 25 MiB
+[30/60] Qwen2.5-0.5B-Instruct streamingllm@0.5   ctx=  2048 decode 12.8 tok/s 0.297 J/tok  req 15.9 J  kv 13 MiB
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[31/60] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.124 J/tok  req 115.4 J  kv 258 MiB
+[32/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.6 tok/s 0.507 J/tok  req 81.3 J  kv 130 MiB
+[33/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  8192 decode 14.5 tok/s 0.509 J/tok  req 79.7 J  kv 130 MiB
+[34/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  2048 decode 15.7 tok/s 0.467 J/tok  req 27.8 J  kv 34 MiB
+[35/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  2048 decode 15.7 tok/s 0.467 J/tok  req 28.4 J  kv 34 MiB
+[36/60] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.2 tok/s 0.467 J/tok  req 27.8 J  kv 66 MiB
+[37/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  2048 decode 15.7 tok/s 0.468 J/tok  req 27.9 J  kv 34 MiB
+[38/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  2048 decode 15.7 tok/s 0.468 J/tok  req 28.4 J  kv 34 MiB
+[39/60] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.2 tok/s 0.467 J/tok  req 27.8 J  kv 66 MiB
+[40/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  8192 decode 14.6 tok/s 0.508 J/tok  req 79.9 J  kv 130 MiB
+[41/60] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.121 J/tok  req 112.8 J  kv 258 MiB
+[42/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.6 tok/s 0.509 J/tok  req 81.6 J  kv 130 MiB
+[43/60] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.124 J/tok  req 112.9 J  kv 258 MiB
+[44/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.6 tok/s 0.509 J/tok  req 81.6 J  kv 130 MiB
+[45/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  8192 decode 14.6 tok/s 0.509 J/tok  req 79.9 J  kv 130 MiB
+[46/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  2048 decode 15.8 tok/s 0.468 J/tok  req 28.4 J  kv 34 MiB
+[47/60] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.3 tok/s 0.468 J/tok  req 27.9 J  kv 66 MiB
+[48/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  2048 decode 15.6 tok/s 0.470 J/tok  req 28.0 J  kv 34 MiB
+[49/60] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.3 tok/s 0.467 J/tok  req 27.9 J  kv 66 MiB
+[50/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  8192 decode 14.5 tok/s 0.510 J/tok  req 80.1 J  kv 130 MiB
+[51/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  2048 decode 15.8 tok/s 0.468 J/tok  req 28.4 J  kv 34 MiB
+[52/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.5 tok/s 0.509 J/tok  req 81.5 J  kv 130 MiB
+[53/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  2048 decode 15.8 tok/s 0.469 J/tok  req 27.9 J  kv 34 MiB
+[54/60] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.124 J/tok  req 113.1 J  kv 258 MiB
+[55/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  8192 decode 14.7 tok/s 0.508 J/tok  req 81.7 J  kv 130 MiB
+[56/60] Llama-3.2-1B-Instruct f16                ctx=  2048 decode 17.3 tok/s 0.467 J/tok  req 27.9 J  kv 66 MiB
+[57/60] Llama-3.2-1B-Instruct f16                ctx=  8192 decode 6.1 tok/s 1.127 J/tok  req 113.3 J  kv 258 MiB
+[58/60] Llama-3.2-1B-Instruct snapkv@0.5         ctx=  2048 decode 15.7 tok/s 0.470 J/tok  req 28.5 J  kv 34 MiB
+[59/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  2048 decode 15.7 tok/s 0.470 J/tok  req 28.0 J  kv 34 MiB
+[60/60] Llama-3.2-1B-Instruct streamingllm@0.5   ctx=  8192 decode 14.6 tok/s 0.510 J/tok  req 80.0 J  kv 130 MiB
+idle W: {'VDD_CPU_GPU_CV': 0.5, 'VDD_IN': 3.15, 'VDD_SOC': 1.05}
+done -> /home/koushik/thesis2/results/evict_20261111_233728.jsonl
+=== 2026-11-11 23:48:45 v4 done

@@ -1,0 +1,191 @@
+
+=== 2026-11-17 09:50:21 15W: O2 decode step, mode loop
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:51:20 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:20 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-17 09:51:26 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:26 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 loop wall 70.4 ms/step  cache 25 MiB  reserved 1072 MiB
+   top cpu: [('aten::mul', 8.967, 220.0), ('aten::mm', 7.005, 97.0), ('aten::add', 5.751, 145.0), ('aten::addmm', 5.299, 72.0), ('aten::copy_', 5.254, 102.0)]
+USDT:2026-11-17 09:51:33 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:33 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 loop wall 71.7 ms/step  cache 49 MiB  reserved 1184 MiB
+   top cpu: [('aten::mul', 9.244, 220.0), ('aten::mm', 7.236, 97.0), ('aten::add', 5.753, 145.0), ('aten::addmm', 5.343, 72.0), ('aten::copy_', 5.28, 102.0)]
+USDT:2026-11-17 09:51:40 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:40 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 loop wall 71.4 ms/step  cache 61 MiB  reserved 1228 MiB
+   top cpu: [('aten::mul', 9.073, 220.0), ('aten::mm', 7.288, 97.0), ('aten::add', 5.759, 145.0), ('aten::addmm', 5.386, 72.0), ('aten::copy_', 5.273, 102.0)]
+USDT:2026-11-17 09:51:47 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:48 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 loop wall 71.0 ms/step  cache 73 MiB  reserved 1290 MiB
+   top cpu: [('aten::mul', 9.103, 220.0), ('aten::mm', 7.223, 97.0), ('aten::add', 5.759, 145.0), ('aten::copy_', 5.408, 102.0), ('aten::addmm', 5.344, 72.0)]
+USDT:2026-11-17 09:51:55 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:51:55 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6656 loop wall 71.3 ms/step  cache 79 MiB  reserved 1288 MiB
+   top cpu: [('aten::mul', 9.053, 220.0), ('aten::mm', 7.199, 97.0), ('aten::add', 5.766, 145.0), ('aten::copy_', 5.351, 102.0), ('aten::addmm', 5.331, 72.0)]
+USDT:2026-11-17 09:52:03 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:52:03 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 loop wall 73.3 ms/step  cache 85 MiB  reserved 1358 MiB
+   top cpu: [('aten::mul', 9.301, 220.0), ('aten::mm', 7.545, 97.0), ('aten::add', 5.918, 145.0), ('aten::addmm', 5.442, 72.0), ('aten::copy_', 5.425, 102.0)]
+USDT:2026-11-17 09:52:11 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:52:11 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7680 loop wall 70.7 ms/step  cache 91 MiB  reserved 1352 MiB
+   top cpu: [('aten::mul', 8.985, 220.0), ('aten::mm', 7.178, 97.0), ('aten::add', 5.72, 145.0), ('aten::addmm', 5.293, 72.0), ('aten::copy_', 5.273, 102.0)]
+USDT:2026-11-17 09:52:19 61102:61102 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:52:19 61102:61102 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  8192 loop wall 70.7 ms/step  cache 97 MiB  reserved 1396 MiB
+   top cpu: [('aten::mul', 9.01, 220.0), ('aten::mm', 7.242, 97.0), ('aten::add', 5.734, 145.0), ('aten::addmm', 5.298, 72.0), ('aten::copy_', 5.259, 102.0)]
+-> /home/koushik/thesis2/results/profstep_Qwen2.5-0.5B-Instruct_sdpa_loop_20261117_095109.jsonl
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:53:28 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:53:28 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-17 09:53:34 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:53:34 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 loop wall 53.9 ms/step  cache 66 MiB  reserved 2590 MiB
+   top cpu: [('aten::mm', 8.17, 113.0), ('aten::copy_', 6.622, 70.0), ('aten::mul', 6.059, 148.0), ('aten::add', 3.866, 97.0), ('aten::cat', 2.857, 65.0)]
+USDT:2026-11-17 09:53:40 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:53:40 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 loop wall 56.9 ms/step  cache 130 MiB  reserved 2828 MiB
+   top cpu: [('aten::mm', 8.062, 113.0), ('aten::copy_', 6.583, 70.0), ('aten::mul', 6.087, 148.0), ('aten::add', 3.824, 97.0), ('aten::cat', 2.846, 65.0)]
+USDT:2026-11-17 09:53:47 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:53:48 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 loop wall 58.5 ms/step  cache 162 MiB  reserved 2954 MiB
+   top cpu: [('aten::mm', 8.175, 113.0), ('aten::copy_', 6.713, 70.0), ('aten::mul', 6.026, 148.0), ('aten::add', 3.817, 97.0), ('aten::cat', 2.875, 65.0)]
+USDT:2026-11-17 09:53:55 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:53:55 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 loop wall 60.0 ms/step  cache 194 MiB  reserved 3066 MiB
+   top cpu: [('aten::mm', 8.233, 113.0), ('aten::copy_', 6.627, 70.0), ('aten::mul', 6.026, 148.0), ('aten::add', 3.856, 97.0), ('aten::cat', 2.908, 65.0)]
+USDT:2026-11-17 09:54:03 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:54:03 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 loop wall 61.5 ms/step  cache 226 MiB  reserved 3178 MiB
+   top cpu: [('aten::mm', 8.269, 113.0), ('aten::copy_', 6.59, 70.0), ('aten::mul', 6.128, 148.0), ('aten::add', 3.862, 97.0), ('aten::cat', 2.865, 65.0)]
+USDT:2026-11-17 09:54:12 61249:61249 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:54:12 61249:61249 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  8192 loop wall 63.3 ms/step  cache 258 MiB  reserved 3290 MiB
+   top cpu: [('aten::mm', 8.347, 113.0), ('aten::copy_', 6.6, 70.0), ('aten::mul', 6.13, 148.0), ('aten::add', 3.866, 97.0), ('aten::cat', 2.859, 65.0)]
+-> /home/koushik/thesis2/results/profstep_Llama-3.2-1B-Instruct_sdpa_loop_20261117_095318.jsonl
+
+=== 2026-11-17 09:54:18 15W: O2 decode step, mode mask
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:54:55 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:54:55 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-17 09:55:01 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:02 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 mask wall 69.9 ms/step  cache 25 MiB  reserved 1072 MiB
+   top cpu: [('aten::mul', 8.768, 220.0), ('aten::mm', 7.02, 97.0), ('aten::add', 5.693, 145.0), ('aten::addmm', 5.28, 72.0), ('aten::copy_', 5.247, 103.0)]
+USDT:2026-11-17 09:55:08 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:08 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 mask wall 70.1 ms/step  cache 49 MiB  reserved 1184 MiB
+   top cpu: [('aten::mul', 8.857, 220.0), ('aten::mm', 7.118, 97.0), ('aten::add', 5.678, 145.0), ('aten::addmm', 5.304, 72.0), ('aten::copy_', 5.151, 103.0)]
+USDT:2026-11-17 09:55:15 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:15 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 mask wall 69.4 ms/step  cache 61 MiB  reserved 1228 MiB
+   top cpu: [('aten::mul', 8.81, 220.0), ('aten::mm', 7.08, 97.0), ('aten::add', 5.618, 145.0), ('aten::addmm', 5.189, 72.0), ('aten::copy_', 5.132, 103.0)]
+USDT:2026-11-17 09:55:22 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:23 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 mask wall 69.4 ms/step  cache 73 MiB  reserved 1290 MiB
+   top cpu: [('aten::mul', 8.77, 220.0), ('aten::mm', 7.089, 97.0), ('aten::add', 5.643, 145.0), ('aten::copy_', 5.223, 103.0), ('aten::addmm', 5.214, 72.0)]
+USDT:2026-11-17 09:55:30 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:30 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6656 mask wall 69.5 ms/step  cache 79 MiB  reserved 1288 MiB
+   top cpu: [('aten::mul', 8.801, 220.0), ('aten::mm', 7.078, 97.0), ('aten::add', 5.654, 145.0), ('aten::addmm', 5.245, 72.0), ('aten::copy_', 5.127, 103.0)]
+USDT:2026-11-17 09:55:37 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:37 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 mask wall 69.4 ms/step  cache 85 MiB  reserved 1358 MiB
+   top cpu: [('aten::mul', 8.81, 220.0), ('aten::mm', 7.118, 97.0), ('aten::add', 5.652, 145.0), ('aten::copy_', 5.228, 103.0), ('aten::addmm', 5.22, 72.0)]
+USDT:2026-11-17 09:55:45 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:45 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7680 mask wall 69.5 ms/step  cache 91 MiB  reserved 1352 MiB
+   top cpu: [('aten::mul', 8.796, 220.0), ('aten::mm', 7.059, 97.0), ('aten::add', 5.656, 145.0), ('aten::addmm', 5.213, 72.0), ('aten::copy_', 5.122, 103.0)]
+USDT:2026-11-17 09:55:53 61345:61345 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:55:53 61345:61345 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  8192 mask wall 70.0 ms/step  cache 97 MiB  reserved 1396 MiB
+   top cpu: [('aten::mul', 8.973, 220.0), ('aten::mm', 7.291, 97.0), ('aten::add', 5.694, 145.0), ('aten::addmm', 5.323, 72.0), ('aten::copy_', 5.17, 103.0)]
+-> /home/koushik/thesis2/results/profstep_Qwen2.5-0.5B-Instruct_sdpa_mask_20261117_095451.jsonl
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:56:43 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:56:43 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-17 09:56:49 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:56:49 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  2048 mask wall 54.4 ms/step  cache 66 MiB  reserved 2590 MiB
+   top cpu: [('aten::mm', 8.581, 113.0), ('aten::copy_', 6.791, 71.0), ('aten::mul', 6.366, 148.0), ('aten::add', 4.006, 97.0), ('aten::cat', 3.081, 66.0)]
+USDT:2026-11-17 09:56:55 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:56:55 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  4096 mask wall 57.0 ms/step  cache 130 MiB  reserved 2828 MiB
+   top cpu: [('aten::mm', 8.202, 113.0), ('aten::copy_', 6.605, 71.0), ('aten::mul', 6.165, 148.0), ('aten::add', 3.845, 97.0), ('aten::cat', 2.879, 66.0)]
+USDT:2026-11-17 09:57:03 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:57:03 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  5120 mask wall 58.7 ms/step  cache 162 MiB  reserved 2954 MiB
+   top cpu: [('aten::mm', 8.22, 113.0), ('aten::copy_', 6.605, 71.0), ('aten::mul', 6.057, 148.0), ('aten::add', 3.843, 97.0), ('aten::cat', 2.926, 66.0)]
+USDT:2026-11-17 09:57:10 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:57:10 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  6144 mask wall 60.0 ms/step  cache 194 MiB  reserved 3066 MiB
+   top cpu: [('aten::mm', 8.247, 113.0), ('aten::copy_', 6.564, 71.0), ('aten::mul', 6.047, 148.0), ('aten::add', 3.857, 97.0), ('aten::cat', 2.914, 66.0)]
+USDT:2026-11-17 09:57:18 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:57:18 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  7168 mask wall 61.8 ms/step  cache 226 MiB  reserved 3178 MiB
+   top cpu: [('aten::mm', 8.25, 113.0), ('aten::copy_', 6.522, 71.0), ('aten::mul', 6.038, 148.0), ('aten::add', 3.891, 97.0), ('aten::cat', 2.913, 66.0)]
+USDT:2026-11-17 09:57:27 61491:61491 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:57:27 61491:61491 SyncActivityProfilerHandler.cpp:46] profiler_stop
+ctx=  8192 mask wall 63.5 ms/step  cache 258 MiB  reserved 3290 MiB
+   top cpu: [('aten::mm', 8.146, 113.0), ('aten::copy_', 6.576, 71.0), ('aten::mul', 6.058, 148.0), ('aten::add', 3.859, 97.0), ('aten::cat', 2.905, 66.0)]
+-> /home/koushik/thesis2/results/profstep_Llama-3.2-1B-Instruct_sdpa_mask_20261117_095640.jsonl
+
+=== 2026-11-17 09:57:31 15W: O2 decode step, mode generate
+Token indices sequence length is longer than the specified maximum sequence length for this model (175904 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:58:06 61527:61527 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:58:06 61527:61527 SyncActivityProfilerHandler.cpp:46] profiler_stop
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+ctx=  2048 generate wall 74.1 ms/step  cache 25 MiB  reserved 1076 MiB
+   top cpu: []
+ctx=  4096 generate wall 72.1 ms/step  cache 49 MiB  reserved 1184 MiB
+   top cpu: []
+ctx=  5120 generate wall 72.3 ms/step  cache 61 MiB  reserved 1228 MiB
+   top cpu: []
+ctx=  6144 generate wall 72.4 ms/step  cache 73 MiB  reserved 1290 MiB
+   top cpu: []
+ctx=  6656 generate wall 72.3 ms/step  cache 79 MiB  reserved 1288 MiB
+   top cpu: []
+ctx=  7168 generate wall 72.3 ms/step  cache 85 MiB  reserved 1358 MiB
+   top cpu: []
+ctx=  7680 generate wall 72.3 ms/step  cache 91 MiB  reserved 1352 MiB
+   top cpu: []
+ctx=  8192 generate wall 72.3 ms/step  cache 97 MiB  reserved 1396 MiB
+   top cpu: []
+-> /home/koushik/thesis2/results/profstep_Qwen2.5-0.5B-Instruct_sdpa_generate_20261117_095804.jsonl
+Token indices sequence length is longer than the specified maximum sequence length for this model (175595 > 131072). Running this sequence through the model will result in indexing errors
+/home/koushik/evict-venv/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+USDT:2026-11-17 09:59:47 61551:61551 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-17 09:59:47 61551:61551 SyncActivityProfilerHandler.cpp:46] profiler_stop
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+ctx=  2048 generate wall 58.3 ms/step  cache 66 MiB  reserved 2592 MiB
+   top cpu: []
+ctx=  4096 generate wall 59.0 ms/step  cache 130 MiB  reserved 2828 MiB
+   top cpu: []
+ctx=  5120 generate wall 60.5 ms/step  cache 162 MiB  reserved 2956 MiB
+   top cpu: []
+ctx=  6144 generate wall 62.0 ms/step  cache 194 MiB  reserved 3068 MiB
+   top cpu: []
+ctx=  7168 generate wall 63.6 ms/step  cache 226 MiB  reserved 3180 MiB
+   top cpu: []
+ctx=  8192 generate wall 65.1 ms/step  cache 258 MiB  reserved 3292 MiB
+   top cpu: []
+-> /home/koushik/thesis2/results/profstep_Llama-3.2-1B-Instruct_sdpa_generate_20261117_095942.jsonl
+
+=== 2026-11-17 10:00:30 15W: Q perplexity of the mixed formats, Qwen2.5-1.5B, 8K
+qwen2.5-1.5b-instruct-q4_k_m,f16,q4_0,8192,32,build-allq,8.7094,0.06068,351
+qwen2.5-1.5b-instruct-q4_k_m,q8_0,q4_0,8192,32,build-allq,8.7171,0.06072,352
+qwen2.5-1.5b-instruct-q4_k_m,f16,f16,8192,32,build-allq,8.6718,0.06045,335
+-> results/ppl_v4_20261117_100036.csv
+=== 2026-11-17 10:17:54 v4c done

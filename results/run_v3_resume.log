@@ -1,0 +1,378 @@
+
+=== 2026-11-01 23:25:07 15W: H (resumed): Llama-3B again from round 0, then Gemma-3-1B
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  96678 koushik   20   0   14352   5168   3104 R  15.4   0.1   0:00.04 top
+    862 root      20   0  314036   7232   6328 S   7.7   0.1   0:03.56 account+
+      1 root      20   0   23372  13704   8668 S   0.0   0.2   0:15.82 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.26 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+{
+ "hostname": "ranjotsingh",
+ "l4t_release": "# R39 (release), REVISION: 2.0, GCID: 45755727, BOARD: generic, EABI: aarch64, DATE: Mon Jun  1 09:28:48 PM UTC 2026",
+ "jetpack": "",
+ "nvpmodel": "NV Power Mode: 15W",
+ "kernel": "6.8.12-1021-tegra",
+ "model_name": "NVIDIA Jetson Orin Nano Developer Kit",
+ "tag": "15W-size",
+ "gen": 128,
+ "kv_types": [
+  "f16",
+  "q8_0",
+  "q4_0"
+ ],
+ "contexts": [
+  1024,
+  4096,
+  8192,
+  16384
+ ],
+ "n_parallel": [
+  1
+ ],
+ "per_context_server": false,
+ "extra_args": [
+  "--cache-ram",
+  "0"
+ ],
+ "llama_bin": "/home/koushik/thesis2/llama.cpp/build/bin",
+ "rounds": 5,
+ "started": "20261101_232512",
+ "top_at_start": "PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n  96693 koushik   20   0   14352   5164   3092 R   8.3   0.1   0:00.03 top\n      1 root      20   0   23372  13704   8668 S   0.0   0.2   0:15.82 systemd\n      2 root      20   0       0      0      0 S   0.0   0.0   0:00.26 kthreadd\n      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+\n      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+"
+}
+power backend: sysfs-hwmon; rails: ['VDD_CPU_GPU_CV', 'VDD_IN', 'VDD_SOC']
+measuring idle power for 10s ...
+idle W: {'VDD_CPU_GPU_CV': 0.46, 'VDD_IN': 3.02, 'VDD_SOC': 1.01}
+mem_avail=6436MB
+[1/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 13.8 tok/s  0.496 J/tok  req 72.0 J  gpu 43.968C  cpu 2%
+[2/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 10.1 tok/s  0.675 J/tok  req 191.9 J  gpu 46.468C  cpu 1%
+[3/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.8 tok/s  0.881 J/tok  req 376.6 J  gpu 49.343C  cpu 2%
+[4/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 12.0 tok/s  0.580 J/tok  req 120.0 J  gpu 50.25C  cpu 1%
+[5/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.2 tok/s  0.589 J/tok  req 121.2 J  gpu 49.718C  cpu 1%
+[6/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.2 tok/s  0.921 J/tok  req 382.4 J  gpu 51.093C  cpu 1%
+[7/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 13.9 tok/s  0.506 J/tok  req 73.5 J  gpu 51.218C  cpu 1%
+[8/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 10.5 tok/s  0.702 J/tok  req 196.6 J  gpu 51.437C  cpu 2%
+[9/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  1024 decode 14.4 tok/s  0.491 J/tok  req 71.1 J  gpu 50.562C  cpu 1%
+[10/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.3 tok/s  0.538 J/tok  req 113.1 J  gpu 50.875C  cpu 2%
+[11/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.2 tok/s  0.725 J/tok  req 345.2 J  gpu 51.187C  cpu 1%
+[12/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  8192 decode 12.1 tok/s  0.602 J/tok  req 179.5 J  gpu 51.5C  cpu 1%
+[13/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.8 tok/s  0.882 J/tok  req 378.1 J  gpu 50.937C  cpu 1%
+[14/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.9 tok/s  0.580 J/tok  req 120.0 J  gpu 50.781C  cpu 1%
+[15/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 13.7 tok/s  0.503 J/tok  req 73.0 J  gpu 50.562C  cpu 1%
+[16/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 10.1 tok/s  0.682 J/tok  req 193.8 J  gpu 50.875C  cpu 1%
+[17/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.2 tok/s  0.920 J/tok  req 381.7 J  gpu 51.125C  cpu 1%
+[18/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 13.9 tok/s  0.506 J/tok  req 73.4 J  gpu 50.718C  cpu 1%
+[19/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.1 tok/s  0.590 J/tok  req 121.4 J  gpu 50.906C  cpu 1%
+[20/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 10.5 tok/s  0.701 J/tok  req 196.3 J  gpu 51.093C  cpu 1%
+[21/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.2 tok/s  0.724 J/tok  req 345.6 J  gpu 50.625C  cpu 1%
+[22/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.3 tok/s  0.539 J/tok  req 113.4 J  gpu 50.718C  cpu 1%
+[23/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  1024 decode 14.4 tok/s  0.491 J/tok  req 71.3 J  gpu 50.687C  cpu 1%
+[24/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  8192 decode 12.1 tok/s  0.601 J/tok  req 179.1 J  gpu 50.531C  cpu 2%
+[25/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 13.9 tok/s  0.504 J/tok  req 73.2 J  gpu 49.812C  cpu 2%
+[26/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.2 tok/s  0.589 J/tok  req 121.3 J  gpu 50.0C  cpu 2%
+[27/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.2 tok/s  0.919 J/tok  req 381.6 J  gpu 50.75C  cpu 1%
+[28/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 10.5 tok/s  0.702 J/tok  req 196.5 J  gpu 50.812C  cpu 1%
+[29/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  1024 decode 14.4 tok/s  0.492 J/tok  req 71.3 J  gpu 50.375C  cpu 2%
+[30/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.3 tok/s  0.538 J/tok  req 113.1 J  gpu 50.406C  cpu 1%
+[31/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  8192 decode 12.1 tok/s  0.600 J/tok  req 179.0 J  gpu 50.593C  cpu 1%
+[32/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.1 tok/s  0.724 J/tok  req 345.4 J  gpu 50.718C  cpu 1%
+[33/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.9 tok/s  0.579 J/tok  req 119.9 J  gpu 50.25C  cpu 2%
+[34/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 13.8 tok/s  0.502 J/tok  req 72.9 J  gpu 50.187C  cpu 1%
+[35/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 10.1 tok/s  0.681 J/tok  req 193.6 J  gpu 50.156C  cpu 1%
+[36/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.8 tok/s  0.882 J/tok  req 378.1 J  gpu 50.5C  cpu 1%
+[37/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.3 tok/s  0.538 J/tok  req 113.0 J  gpu 50.25C  cpu 1%
+[38/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  1024 decode 14.4 tok/s  0.491 J/tok  req 71.3 J  gpu 50.156C  cpu 1%
+[39/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  8192 decode 12.1 tok/s  0.602 J/tok  req 179.0 J  gpu 50.25C  cpu 2%
+[40/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.2 tok/s  0.726 J/tok  req 345.0 J  gpu 50.656C  cpu 2%
+[41/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.1 tok/s  0.590 J/tok  req 121.4 J  gpu 49.656C  cpu 1%
+[42/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 13.8 tok/s  0.508 J/tok  req 73.8 J  gpu 50.187C  cpu 2%
+[43/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 10.5 tok/s  0.703 J/tok  req 196.7 J  gpu 50.218C  cpu 2%
+[44/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.2 tok/s  0.923 J/tok  req 383.2 J  gpu 51.218C  cpu 2%
+[45/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 13.8 tok/s  0.504 J/tok  req 73.3 J  gpu 50.5C  cpu 2%
+[46/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.8 tok/s  0.885 J/tok  req 380.4 J  gpu 50.718C  cpu 2%
+[47/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 10.1 tok/s  0.685 J/tok  req 195.0 J  gpu 50.875C  cpu 2%
+[48/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 12.0 tok/s  0.582 J/tok  req 120.9 J  gpu 51.0C  cpu 2%
+[49/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.2 tok/s  0.925 J/tok  req 384.0 J  gpu 51.218C  cpu 2%
+[50/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 13.8 tok/s  0.506 J/tok  req 73.5 J  gpu 51.156C  cpu 2%
+[51/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.1 tok/s  0.591 J/tok  req 121.6 J  gpu 50.75C  cpu 1%
+[52/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 10.4 tok/s  0.701 J/tok  req 196.3 J  gpu 51.125C  cpu 1%
+[53/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  8192 decode 12.0 tok/s  0.600 J/tok  req 178.5 J  gpu 50.531C  cpu 1%
+[54/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.2 tok/s  0.723 J/tok  req 344.0 J  gpu 50.625C  cpu 1%
+[55/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.3 tok/s  0.539 J/tok  req 113.1 J  gpu 50.812C  cpu 2%
+[56/120] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  1024 decode 14.4 tok/s  0.492 J/tok  req 71.4 J  gpu 50.781C  cpu 2%
+[57/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.9 tok/s  0.579 J/tok  req 120.0 J  gpu 49.968C  cpu 2%
+[58/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 10.1 tok/s  0.681 J/tok  req 193.7 J  gpu 50.312C  cpu 2%
+[59/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 13.8 tok/s  0.506 J/tok  req 73.3 J  gpu 50.281C  cpu 2%
+[60/120] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.8 tok/s  0.882 J/tok  req 378.6 J  gpu 50.781C  cpu 1%
+[61/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 39.1 J  gpu 48.656C  cpu 2%
+[62/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 24.9 tok/s  0.210 J/tok  req 28.7 J  gpu 48.781C  cpu 2%
+[63/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 24.2 tok/s  0.221 J/tok  req 53.4 J  gpu 48.437C  cpu 2%
+[64/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.229 J/tok  req 83.4 J  gpu 48.406C  cpu 2%
+[65/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 24.1 tok/s  0.220 J/tok  req 53.3 J  gpu 48.468C  cpu 2%
+[66/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 39.0 J  gpu 48.156C  cpu 2%
+[67/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.228 J/tok  req 83.3 J  gpu 48.281C  cpu 2%
+[68/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 24.8 tok/s  0.209 J/tok  req 28.6 J  gpu 48.312C  cpu 2%
+[69/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.7 tok/s  0.221 J/tok  req 80.5 J  gpu 48.312C  cpu 2%
+[70/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  1024 decode 25.3 tok/s  0.207 J/tok  req 28.3 J  gpu 47.906C  cpu 2%
+[71/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.0 tok/s  0.213 J/tok  req 38.3 J  gpu 48.25C  cpu 2%
+[72/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  8192 decode 25.0 tok/s  0.215 J/tok  req 51.8 J  gpu 47.968C  cpu 2%
+[73/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 24.7 tok/s  0.209 J/tok  req 28.6 J  gpu 47.781C  cpu 2%
+[74/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 24.1 tok/s  0.221 J/tok  req 53.5 J  gpu 47.937C  cpu 2%
+[75/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.4 tok/s  0.217 J/tok  req 39.1 J  gpu 47.75C  cpu 2%
+[76/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.228 J/tok  req 83.4 J  gpu 47.937C  cpu 2%
+[77/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.8 tok/s  0.220 J/tok  req 80.3 J  gpu 48.125C  cpu 2%
+[78/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  1024 decode 25.5 tok/s  0.207 J/tok  req 28.2 J  gpu 47.875C  cpu 2%
+[79/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.4 tok/s  0.213 J/tok  req 38.2 J  gpu 47.75C  cpu 2%
+[80/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  8192 decode 25.1 tok/s  0.215 J/tok  req 51.8 J  gpu 47.781C  cpu 2%
+[81/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.227 J/tok  req 82.9 J  gpu 47.937C  cpu 2%
+[82/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 38.9 J  gpu 47.781C  cpu 2%
+[83/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 24.7 tok/s  0.209 J/tok  req 28.6 J  gpu 47.687C  cpu 2%
+[84/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 24.1 tok/s  0.220 J/tok  req 53.3 J  gpu 47.875C  cpu 2%
+[85/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.228 J/tok  req 83.1 J  gpu 47.718C  cpu 2%
+[86/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 24.8 tok/s  0.209 J/tok  req 28.5 J  gpu 47.968C  cpu 2%
+[87/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 24.1 tok/s  0.220 J/tok  req 53.3 J  gpu 47.75C  cpu 2%
+[88/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.4 tok/s  0.216 J/tok  req 39.0 J  gpu 47.843C  cpu 2%
+[89/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.7 tok/s  0.216 J/tok  req 39.0 J  gpu 47.875C  cpu 2%
+[90/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 24.2 tok/s  0.220 J/tok  req 53.3 J  gpu 47.812C  cpu 2%
+[91/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.228 J/tok  req 83.2 J  gpu 48.218C  cpu 2%
+[92/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 24.9 tok/s  0.210 J/tok  req 28.7 J  gpu 47.781C  cpu 2%
+[93/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.3 tok/s  0.214 J/tok  req 38.3 J  gpu 47.687C  cpu 2%
+[94/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  1024 decode 25.4 tok/s  0.206 J/tok  req 28.1 J  gpu 47.656C  cpu 2%
+[95/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  8192 decode 24.8 tok/s  0.216 J/tok  req 52.0 J  gpu 47.875C  cpu 2%
+[96/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.4 tok/s  0.221 J/tok  req 80.4 J  gpu 47.812C  cpu 2%
+[97/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  1024 decode 25.3 tok/s  0.207 J/tok  req 28.2 J  gpu 47.687C  cpu 2%
+[98/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  8192 decode 25.1 tok/s  0.215 J/tok  req 51.8 J  gpu 47.812C  cpu 2%
+[99/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.3 tok/s  0.212 J/tok  req 38.2 J  gpu 47.687C  cpu 2%
+[100/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.7 tok/s  0.220 J/tok  req 80.3 J  gpu 47.75C  cpu 2%
+[101/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 24.0 tok/s  0.221 J/tok  req 53.4 J  gpu 47.812C  cpu 2%
+[102/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 39.1 J  gpu 47.593C  cpu 2%
+[103/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.2 tok/s  0.228 J/tok  req 83.3 J  gpu 47.812C  cpu 2%
+[104/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 24.8 tok/s  0.209 J/tok  req 28.6 J  gpu 48.0C  cpu 2%
+[105/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 39.0 J  gpu 47.718C  cpu 2%
+[106/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 24.8 tok/s  0.210 J/tok  req 28.7 J  gpu 47.531C  cpu 2%
+[107/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 24.3 tok/s  0.220 J/tok  req 53.2 J  gpu 47.812C  cpu 2%
+[108/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.229 J/tok  req 83.3 J  gpu 47.781C  cpu 2%
+[109/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  8192 decode 25.1 tok/s  0.215 J/tok  req 51.8 J  gpu 47.843C  cpu 2%
+[110/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  1024 decode 25.1 tok/s  0.208 J/tok  req 28.4 J  gpu 47.656C  cpu 2%
+[111/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 24.6 tok/s  0.214 J/tok  req 38.3 J  gpu 47.562C  cpu 2%
+[112/120] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.6 tok/s  0.221 J/tok  req 80.5 J  gpu 48.125C  cpu 2%
+[113/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.229 J/tok  req 83.3 J  gpu 48.125C  cpu 2%
+[114/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 39.0 J  gpu 47.906C  cpu 2%
+[115/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  1024 decode 24.8 tok/s  0.209 J/tok  req 28.6 J  gpu 48.0C  cpu 2%
+[116/120] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  8192 decode 24.0 tok/s  0.220 J/tok  req 53.3 J  gpu 47.625C  cpu 2%
+[117/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  8192 decode 24.3 tok/s  0.220 J/tok  req 53.2 J  gpu 47.812C  cpu 2%
+[118/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.6 tok/s  0.216 J/tok  req 39.0 J  gpu 47.656C  cpu 2%
+[119/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.228 J/tok  req 83.1 J  gpu 48.093C  cpu 2%
+[120/120] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  1024 decode 24.9 tok/s  0.209 J/tok  req 28.6 J  gpu 47.75C  cpu 2%
+measuring idle power for 10s ...
+idle W: {'VDD_CPU_GPU_CV': 0.51, 'VDD_IN': 3.21, 'VDD_SOC': 1.08}
+
+done: 120 runs -> /home/koushik/thesis2/results/kv_20261101_232512.jsonl
+meta -> /home/koushik/thesis2/results/kv_20261101_232512.meta.json
+
+=== 2026-11-02 00:12:08 15W: I long replies: 512 generated tokens at 4K and 16K, 3 rounds
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+ 100469 koushik   20   0   14352   4876   2808 R   8.3   0.1   0:00.04 top
+      1 root      20   0   23372  12628   7592 S   0.0   0.2   0:16.03 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.27 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+{
+ "hostname": "ranjotsingh",
+ "l4t_release": "# R39 (release), REVISION: 2.0, GCID: 45755727, BOARD: generic, EABI: aarch64, DATE: Mon Jun  1 09:28:48 PM UTC 2026",
+ "jetpack": "",
+ "nvpmodel": "NV Power Mode: 15W",
+ "kernel": "6.8.12-1021-tegra",
+ "model_name": "NVIDIA Jetson Orin Nano Developer Kit",
+ "tag": "15W-gen512",
+ "gen": 512,
+ "kv_types": [
+  "f16",
+  "q8_0",
+  "q4_0"
+ ],
+ "contexts": [
+  4096,
+  16384
+ ],
+ "n_parallel": [
+  1
+ ],
+ "per_context_server": false,
+ "extra_args": [
+  "--cache-ram",
+  "0"
+ ],
+ "llama_bin": "/home/koushik/thesis2/llama.cpp/build/bin",
+ "rounds": 3,
+ "started": "20261102_001213",
+ "top_at_start": "PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n    320 systemd+  20   0   24300   7148   5960 S   8.3   0.1   0:10.14 systemd+\n    926 root      20   0  693716  14400  10024 S   8.3   0.2   1:22.59 Network+\n 100484 koushik   20   0   14352   4872   2808 R   8.3   0.1   0:00.03 top\n      1 root      20   0   23372  12628   7592 S   0.0   0.2   0:16.03 systemd\n      2 root      20   0       0      0      0 S   0.0   0.0   0:00.27 kthreadd"
+}
+power backend: sysfs-hwmon; rails: ['VDD_CPU_GPU_CV', 'VDD_IN', 'VDD_SOC']
+measuring idle power for 10s ...
+idle W: {'VDD_CPU_GPU_CV': 0.47, 'VDD_IN': 3.05, 'VDD_SOC': 1.01}
+mem_avail=5552MB
+[1/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 30.3 tok/s  0.194 J/tok  req 149.9 J  gpu 46.812C  cpu 2%
+[2/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 44.1 tok/s  0.118 J/tok  req 67.3 J  gpu 47.0C  cpu 2%
+[3/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 31.2 tok/s  0.208 J/tok  req 157.2 J  gpu 48.5C  cpu 2%
+[4/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 43.6 tok/s  0.120 J/tok  req 68.3 J  gpu 47.968C  cpu 2%
+[5/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 51.8 tok/s  0.103 J/tok  req 59.3 J  gpu 47.781C  cpu 3%
+[6/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 45.7 tok/s  0.125 J/tok  req 113.0 J  gpu 48.125C  cpu 2%
+[7/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 44.6 tok/s  0.119 J/tok  req 67.9 J  gpu 48.281C  cpu 2%
+[8/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 31.5 tok/s  0.208 J/tok  req 157.3 J  gpu 49.031C  cpu 2%
+[9/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 51.6 tok/s  0.104 J/tok  req 59.9 J  gpu 48.468C  cpu 3%
+[10/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 45.4 tok/s  0.126 J/tok  req 113.8 J  gpu 48.687C  cpu 3%
+[11/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 30.2 tok/s  0.195 J/tok  req 150.8 J  gpu 49.25C  cpu 3%
+[12/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 44.0 tok/s  0.119 J/tok  req 67.8 J  gpu 49.25C  cpu 3%
+[13/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 44.9 tok/s  0.126 J/tok  req 114.2 J  gpu 48.875C  cpu 3%
+[14/108] qwen2.5-0.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 50.5 tok/s  0.105 J/tok  req 60.2 J  gpu 48.875C  cpu 3%
+[15/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 31.3 tok/s  0.210 J/tok  req 158.5 J  gpu 49.593C  cpu 3%
+[16/108] qwen2.5-0.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 44.0 tok/s  0.121 J/tok  req 68.7 J  gpu 49.406C  cpu 3%
+[17/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 44.0 tok/s  0.119 J/tok  req 67.7 J  gpu 48.906C  cpu 3%
+[18/108] qwen2.5-0.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 30.2 tok/s  0.196 J/tok  req 151.6 J  gpu 49.5C  cpu 3%
+[19/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 22.4 tok/s  0.296 J/tok  req 273.0 J  gpu 49.125C  cpu 2%
+[20/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 25.7 tok/s  0.249 J/tok  req 148.0 J  gpu 49.5C  cpu 2%
+[21/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 21.9 tok/s  0.277 J/tok  req 162.6 J  gpu 49.187C  cpu 2%
+[22/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 14.7 tok/s  0.427 J/tok  req 342.8 J  gpu 50.031C  cpu 1%
+[23/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 22.5 tok/s  0.286 J/tok  req 167.3 J  gpu 49.937C  cpu 2%
+[24/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 15.4 tok/s  0.444 J/tok  req 352.0 J  gpu 50.468C  cpu 2%
+[25/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 22.3 tok/s  0.287 J/tok  req 167.7 J  gpu 50.375C  cpu 2%
+[26/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 15.4 tok/s  0.444 J/tok  req 352.3 J  gpu 50.718C  cpu 1%
+[27/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 26.0 tok/s  0.248 J/tok  req 147.2 J  gpu 50.25C  cpu 2%
+[28/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 22.6 tok/s  0.296 J/tok  req 272.7 J  gpu 50.343C  cpu 2%
+[29/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 14.7 tok/s  0.427 J/tok  req 342.9 J  gpu 50.656C  cpu 2%
+[30/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 22.1 tok/s  0.276 J/tok  req 162.4 J  gpu 50.312C  cpu 2%
+[31/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 22.6 tok/s  0.296 J/tok  req 272.4 J  gpu 50.031C  cpu 2%
+[32/108] qwen2.5-1.5b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 25.7 tok/s  0.249 J/tok  req 147.7 J  gpu 50.187C  cpu 2%
+[33/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 22.1 tok/s  0.276 J/tok  req 162.2 J  gpu 49.687C  cpu 2%
+[34/108] qwen2.5-1.5b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 14.7 tok/s  0.427 J/tok  req 342.8 J  gpu 50.25C  cpu 2%
+[35/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 15.3 tok/s  0.444 J/tok  req 352.3 J  gpu 50.25C  cpu 2%
+[36/108] qwen2.5-1.5b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 22.3 tok/s  0.287 J/tok  req 167.9 J  gpu 49.968C  cpu 2%
+[37/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 12.2 tok/s  0.544 J/tok  req 321.8 J  gpu 49.531C  cpu 1%
+[38/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 8.3 tok/s  0.761 J/tok  req 618.0 J  gpu 50.562C  cpu 1%
+[39/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 12.9 tok/s  0.553 J/tok  req 497.5 J  gpu 50.562C  cpu 2%
+[40/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 14.4 tok/s  0.492 J/tok  req 293.2 J  gpu 50.968C  cpu 2%
+[41/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 8.8 tok/s  0.770 J/tok  req 623.2 J  gpu 50.875C  cpu 1%
+[42/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 12.5 tok/s  0.549 J/tok  req 325.1 J  gpu 50.937C  cpu 2%
+[43/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 12.3 tok/s  0.547 J/tok  req 323.4 J  gpu 50.843C  cpu 1%
+[44/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 8.4 tok/s  0.762 J/tok  req 618.7 J  gpu 50.718C  cpu 2%
+[45/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 8.8 tok/s  0.773 J/tok  req 625.4 J  gpu 51.187C  cpu 2%
+[46/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 12.5 tok/s  0.552 J/tok  req 326.6 J  gpu 51.625C  cpu 2%
+[47/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 13.0 tok/s  0.556 J/tok  req 501.3 J  gpu 51.343C  cpu 2%
+[48/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 14.4 tok/s  0.495 J/tok  req 295.2 J  gpu 51.531C  cpu 2%
+[49/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx= 16384 decode 13.0 tok/s  0.554 J/tok  req 501.7 J  gpu 51.375C  cpu 1%
+[50/108] qwen2.5-3b-instruct-q4_k_m kv=f16       np=1 ctx=  4096 decode 14.4 tok/s  0.493 J/tok  req 294.5 J  gpu 51.656C  cpu 1%
+[51/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx=  4096 decode 12.5 tok/s  0.550 J/tok  req 325.0 J  gpu 51.687C  cpu 1%
+[52/108] qwen2.5-3b-instruct-q4_k_m kv=q8_0      np=1 ctx= 16384 decode 8.8 tok/s  0.769 J/tok  req 623.4 J  gpu 51.5C  cpu 1%
+[53/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx= 16384 decode 8.4 tok/s  0.761 J/tok  req 617.9 J  gpu 50.968C  cpu 1%
+[54/108] qwen2.5-3b-instruct-q4_k_m kv=q4_0      np=1 ctx=  4096 decode 12.3 tok/s  0.546 J/tok  req 323.1 J  gpu 50.968C  cpu 1%
+[55/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 29.4 tok/s  0.238 J/tok  req 135.9 J  gpu 49.937C  cpu 2%
+[56/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 20.7 tok/s  0.386 J/tok  req 283.9 J  gpu 50.937C  cpu 2%
+[57/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 32.5 tok/s  0.214 J/tok  req 123.2 J  gpu 50.437C  cpu 2%
+[58/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 26.6 tok/s  0.269 J/tok  req 220.7 J  gpu 50.437C  cpu 2%
+[59/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 28.9 tok/s  0.235 J/tok  req 134.5 J  gpu 50.5C  cpu 2%
+[60/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 19.9 tok/s  0.364 J/tok  req 273.3 J  gpu 50.812C  cpu 2%
+[61/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 20.0 tok/s  0.364 J/tok  req 272.7 J  gpu 51.125C  cpu 2%
+[62/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 28.6 tok/s  0.236 J/tok  req 134.8 J  gpu 50.937C  cpu 2%
+[63/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 20.7 tok/s  0.386 J/tok  req 284.5 J  gpu 51.562C  cpu 2%
+[64/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 29.4 tok/s  0.239 J/tok  req 136.6 J  gpu 51.062C  cpu 2%
+[65/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 26.3 tok/s  0.269 J/tok  req 220.7 J  gpu 50.718C  cpu 2%
+[66/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 32.0 tok/s  0.215 J/tok  req 123.8 J  gpu 51.0C  cpu 2%
+[67/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 31.9 tok/s  0.215 J/tok  req 123.6 J  gpu 50.375C  cpu 2%
+[68/108] Llama-3.2-1B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 26.2 tok/s  0.269 J/tok  req 220.6 J  gpu 50.468C  cpu 2%
+[69/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 28.9 tok/s  0.235 J/tok  req 134.4 J  gpu 50.343C  cpu 2%
+[70/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 19.9 tok/s  0.364 J/tok  req 273.2 J  gpu 50.843C  cpu 2%
+[71/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 29.3 tok/s  0.239 J/tok  req 136.5 J  gpu 50.687C  cpu 2%
+[72/108] Llama-3.2-1B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 20.7 tok/s  0.386 J/tok  req 284.2 J  gpu 51.312C  cpu 2%
+[73/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.1 tok/s  0.727 J/tok  req 621.7 J  gpu 50.656C  cpu 1%
+[74/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.2 tok/s  0.546 J/tok  req 323.1 J  gpu 50.906C  cpu 2%
+[75/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.9 tok/s  0.586 J/tok  req 345.3 J  gpu 50.562C  cpu 1%
+[76/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.7 tok/s  0.892 J/tok  req 721.7 J  gpu 51.218C  cpu 2%
+[77/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.0 tok/s  0.601 J/tok  req 353.9 J  gpu 51.0C  cpu 2%
+[78/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.1 tok/s  0.934 J/tok  req 744.4 J  gpu 52.187C  cpu 2%
+[79/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.7 tok/s  0.887 J/tok  req 720.4 J  gpu 51.218C  cpu 1%
+[80/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.8 tok/s  0.588 J/tok  req 346.7 J  gpu 51.187C  cpu 1%
+[81/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.1 tok/s  0.930 J/tok  req 740.7 J  gpu 51.937C  cpu 1%
+[82/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.0 tok/s  0.600 J/tok  req 353.3 J  gpu 51.5C  cpu 1%
+[83/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.1 tok/s  0.729 J/tok  req 624.6 J  gpu 51.218C  cpu 1%
+[84/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.2 tok/s  0.545 J/tok  req 323.1 J  gpu 51.343C  cpu 2%
+[85/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx= 16384 decode 10.1 tok/s  0.729 J/tok  req 624.4 J  gpu 51.093C  cpu 1%
+[86/108] Llama-3.2-3B-Instruct-Q4_K_M kv=f16       np=1 ctx=  4096 decode 13.2 tok/s  0.545 J/tok  req 323.3 J  gpu 51.375C  cpu 1%
+[87/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 7.7 tok/s  0.888 J/tok  req 719.0 J  gpu 51.281C  cpu 1%
+[88/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 11.8 tok/s  0.587 J/tok  req 346.4 J  gpu 51.343C  cpu 1%
+[89/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 12.0 tok/s  0.600 J/tok  req 352.8 J  gpu 51.125C  cpu 2%
+[90/108] Llama-3.2-3B-Instruct-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 8.1 tok/s  0.929 J/tok  req 739.8 J  gpu 51.718C  cpu 1%
+[91/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.4 tok/s  0.216 J/tok  req 122.0 J  gpu 49.062C  cpu 2%
+[92/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.226 J/tok  req 169.4 J  gpu 48.656C  cpu 2%
+[93/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.3 tok/s  0.213 J/tok  req 119.9 J  gpu 48.343C  cpu 2%
+[94/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.7 tok/s  0.219 J/tok  req 164.3 J  gpu 48.562C  cpu 2%
+[95/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.6 tok/s  0.228 J/tok  req 170.5 J  gpu 48.437C  cpu 2%
+[96/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.6 tok/s  0.216 J/tok  req 122.1 J  gpu 48.687C  cpu 2%
+[97/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.227 J/tok  req 169.9 J  gpu 48.406C  cpu 2%
+[98/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.4 tok/s  0.216 J/tok  req 121.7 J  gpu 48.75C  cpu 2%
+[99/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.8 tok/s  0.219 J/tok  req 164.4 J  gpu 48.718C  cpu 2%
+[100/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.3 tok/s  0.212 J/tok  req 119.5 J  gpu 48.468C  cpu 2%
+[101/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.6 tok/s  0.216 J/tok  req 121.8 J  gpu 48.312C  cpu 2%
+[102/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.227 J/tok  req 170.1 J  gpu 48.343C  cpu 2%
+[103/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx=  4096 decode 25.2 tok/s  0.214 J/tok  req 120.5 J  gpu 48.375C  cpu 3%
+[104/108] gemma-3-1b-it-Q4_K_M kv=f16       np=1 ctx= 16384 decode 24.6 tok/s  0.220 J/tok  req 164.5 J  gpu 48.343C  cpu 2%
+[105/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx= 16384 decode 23.5 tok/s  0.228 J/tok  req 170.5 J  gpu 48.687C  cpu 2%
+[106/108] gemma-3-1b-it-Q4_K_M kv=q8_0      np=1 ctx=  4096 decode 24.6 tok/s  0.217 J/tok  req 122.4 J  gpu 48.75C  cpu 3%
+[107/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx=  4096 decode 24.5 tok/s  0.216 J/tok  req 122.1 J  gpu 48.468C  cpu 3%
+[108/108] gemma-3-1b-it-Q4_K_M kv=q4_0      np=1 ctx= 16384 decode 23.3 tok/s  0.228 J/tok  req 170.8 J  gpu 48.468C  cpu 3%
+measuring idle power for 10s ...
+idle W: {'VDD_CPU_GPU_CV': 0.53, 'VDD_IN': 3.26, 'VDD_SOC': 1.08}
+
+done: 108 runs -> /home/koushik/thesis2/results/kv_20261102_001213.jsonl
+meta -> /home/koushik/thesis2/results/kv_20261102_001213.meta.json
+
+=== 2026-11-02 01:40:14 15W: J perplexity of every model, and the Llama K/V split at 8K
+--- top:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+ 111754 koushik   20   0   14352   5112   3048 R  16.7   0.1   0:00.05 top
+      1 root      20   0   23372  10036   5000 S   0.0   0.1   0:16.40 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.27 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+qwen2.5-0.5b-instruct-q4_k_m,f16,f16,2048,64,build,13.4291,0.14776,77
+qwen2.5-0.5b-instruct-q4_k_m,q8_0,q8_0,2048,64,build,13.6141,0.15010,73
+qwen2.5-0.5b-instruct-q4_k_m,q4_0,q4_0,2048,64,build,111.2016,1.62937,72
+qwen2.5-0.5b-instruct-q4_k_m,f16,f16,8192,32,build,12.8274,0.09866,153
+qwen2.5-0.5b-instruct-q4_k_m,q8_0,q8_0,8192,32,build,13.0167,0.10037,158
+qwen2.5-0.5b-instruct-q4_k_m,q4_0,q4_0,8192,32,build,179.0184,1.97507,156
+qwen2.5-1.5b-instruct-q4_k_m,f16,f16,2048,64,build,8.8351,0.08761,165
+qwen2.5-1.5b-instruct-q4_k_m,q8_0,q8_0,2048,64,build,8.8486,0.08776,154
+qwen2.5-1.5b-instruct-q4_k_m,q4_0,q4_0,2048,64,build,4629.7220,72.49883,154
+qwen2.5-1.5b-instruct-q4_k_m,f16,f16,8192,32,build,8.6718,0.06045,332
+qwen2.5-1.5b-instruct-q4_k_m,q8_0,q8_0,8192,32,build,8.6759,0.06052,339
+qwen2.5-1.5b-instruct-q4_k_m,q4_0,q4_0,8192,32,build,6425.1651,73.61228,338
+qwen2.5-3b-instruct-q4_k_m,f16,f16,2048,64,build,7.7258,0.07565,294
+qwen2.5-3b-instruct-q4_k_m,q8_0,q8_0,2048,64,build,7.7281,0.07567,282
+qwen2.5-3b-instruct-q4_k_m,q4_0,q4_0,2048,64,build,18.2948,0.20323,274
+qwen2.5-3b-instruct-q4_k_m,f16,f16,8192,32,build,7.6350,0.05239,577
+qwen2.5-3b-instruct-q4_k_m,q8_0,q8_0,8192,32,build,7.6342,0.05241,603
+qwen2.5-3b-instruct-q4_k_m,q4_0,q4_0,8192,32,build,35.2051,0.30311,602
+Llama-3.2-1B-Instruct-Q4_K_M,f16,f16,2048,64,build,12.1294,0.12860,127
+Llama-3.2-1B-Instruct-Q4_K_M,q8_0,q8_0,2048,64,build,12.1317,0.12862,119
+Llama-3.2-1B-Instruct-Q4_K_M,q4_0,q4_0,2048,64,build,12.6851,0.13459,118
+Llama-3.2-1B-Instruct-Q4_K_M,f16,f16,8192,32,build,11.4984,0.08430,250
+Llama-3.2-1B-Instruct-Q4_K_M,q8_0,q8_0,8192,32,build,11.4975,0.08434,256
+Llama-3.2-1B-Instruct-Q4_K_M,q4_0,q4_0,8192,32,build,12.0702,0.08851,256
+Llama-3.2-3B-Instruct-Q4_K_M,f16,f16,2048,64,build,8.9606,0.09026,297
+Llama-3.2-3B-Instruct-Q4_K_M,q8_0,q8_0,2048,64,build,8.9592,0.09020,297
+Llama-3.2-3B-Instruct-Q4_K_M,q4_0,q4_0,2048,64,build,9.0901,0.09151,280
+Llama-3.2-3B-Instruct-Q4_K_M,f16,f16,8192,32,build,8.3275,0.05746,609
+Llama-3.2-3B-Instruct-Q4_K_M,q8_0,q8_0,8192,32,build,8.3259,0.05744,651
+Llama-3.2-3B-Instruct-Q4_K_M,q4_0,q4_0,8192,32,build,8.4517,0.05828,643
+gemma-3-1b-it-Q4_K_M,f16,f16,2048,64,build,21.2694,0.29287,129
+gemma-3-1b-it-Q4_K_M,q8_0,q8_0,2048,64,build,21.2650,0.29293,120
+gemma-3-1b-it-Q4_K_M,q4_0,q4_0,2048,64,build,21.9719,0.30341,119
+gemma-3-1b-it-Q4_K_M,f16,f16,4096,64,build,18.9099,0.17868,230
+gemma-3-1b-it-Q4_K_M,q8_0,q8_0,4096,64,build,18.9225,0.17880,234
+gemma-3-1b-it-Q4_K_M,q4_0,q4_0,4096,64,build,19.4209,0.18398,233
+Llama-3.2-1B-Instruct-Q8_0,f16,q4_0,8192,32,build-allq,11.1034,0.08093,245
+Llama-3.2-1B-Instruct-Q8_0,q4_0,f16,8192,32,build-allq,11.5699,0.08425,238
+Llama-3.2-1B-Instruct-Q8_0,q8_0,q4_0,8192,32,build-allq,11.1025,0.08092,232
+-> results/ppl_v3_20261102_014019.csv
+=== 2026-11-02 04:35:06 v3 done

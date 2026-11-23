@@ -1,0 +1,33 @@
+{
+ "tag": "15W-pytq",
+ "gen": 128,
+ "methods": [
+  "f16",
+  "quanto4",
+  "quanto2",
+  "hqq8",
+  "hqq4",
+  "snapkv@0.5"
+ ],
+ "contexts": [
+  1024,
+  4096,
+  8192
+ ],
+ "rounds": 3,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261111_225532",
+ "kvpress": "?",
+ "transformers": "4.57.6",
+ "idle_w": {
+  "VDD_CPU_GPU_CV": 0.4909415248618785,
+  "VDD_IN": 3.0892439337016575,
+  "VDD_SOC": 1.0162832265193371
+ },
+ "idle_w_end": {
+  "VDD_CPU_GPU_CV": 0.5006798222222222,
+  "VDD_IN": 3.1396764444444445,
+  "VDD_SOC": 1.0561749333333335
+ }
+}

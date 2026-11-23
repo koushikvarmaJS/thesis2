@@ -31,7 +31,17 @@ KV_LABEL = {'f16': 'f16 (flash attn on)', 'f16@off': 'f16 (flash attn off)', 'q8
 SHORT = {'Llama-3.2-1B-Instruct-Q8_0': 'Llama-1B', 'qwen2.5-0.5b-instruct-q8_0': 'Qwen-0.5B',
          'Llama-3.2-1B-Instruct-Q4_K_M': 'Llama-1B (4-bit weights)',
          'qwen2.5-0.5b-instruct-q4_k_m': 'Qwen-0.5B (4-bit weights)',
-         'Llama-3.2-3B-Instruct-Q4_K_M': 'Llama-3B (4-bit weights)'}
+         'Llama-3.2-3B-Instruct-Q4_K_M': 'Llama-3B (4-bit weights)',
+         'qwen2.5-1.5b-instruct-q4_k_m': 'Qwen-1.5B (4-bit weights)',
+         'qwen2.5-3b-instruct-q4_k_m': 'Qwen-3B (4-bit weights)',
+         'gemma-3-1b-it-Q4_K_M': 'Gemma-1B (4-bit weights)',
+         'Qwen2.5-0.5B-Instruct': 'Qwen-0.5B (PyTorch, f16)', 'Llama-3.2-1B-Instruct': 'Llama-1B (PyTorch, f16)'}
+# size/family set (v3), in plot order: Qwen by size, Llama by size, then Gemma
+SIZE_MODELS = ['qwen2.5-0.5b-instruct-q4_k_m', 'qwen2.5-1.5b-instruct-q4_k_m', 'qwen2.5-3b-instruct-q4_k_m',
+               'Llama-3.2-1B-Instruct-Q4_K_M', 'Llama-3.2-3B-Instruct-Q4_K_M', 'gemma-3-1b-it-Q4_K_M']
+# rows replaced by a later rerun: the 31 Oct v3 run crashed (out of memory) during Llama-3B; Llama-3B was
+# rerun from round 0 on 1 Nov with --cache-ram 0, so its partial rows from the crashed file are dropped
+SUPERSEDED = {('kv_20261031_201343.jsonl', 'Llama-3.2-3B-Instruct-Q4_K_M')}
 
 
 def ci(xs):
@@ -79,6 +89,15 @@ def rebase_idle(r, meta):
     r['_idle'] = {rail: min(v, end.get(rail, v)) for rail, v in start.items()}
 
 
+def swa_kv_size(r):
+    """Gemma-3-1B keeps the full context in only 4 of its 26 layers; the other 22 are sliding-window layers
+    (window 512) that llama.cpp gives n_swa + n_ubatch = 1,024 cells (server log: 65.0 + 22.0 MiB at 16K f16).
+    bench_kv.py sized the cache as if all 26 layers were full-context, so correct it here."""
+    n = r['context_len'] + (r.get('gen_tokens') or 128)
+    full = r['kv_used_mib']
+    r['kv_used_mib'] = full * 4 / 26 + full / n * 22 / 26 * min(n, 1024)
+
+
 def load_runs(paths):
     rows = []
     for p in paths:
@@ -88,6 +107,10 @@ def load_runs(paths):
             if not line.strip():
                 continue
             r = json.loads(line)
+            if (Path(p).name, r.get('model')) in SUPERSEDED:
+                continue
+            if r.get('model', '').startswith('gemma-3-1b') and r.get('kv_used_mib'):
+                swa_kv_size(r)
             r.setdefault('status', 'ok')
             r.setdefault('n_parallel', 1)
             r['_file'] = Path(p).name
@@ -348,6 +371,109 @@ def kernel_plot(ks, path):
     print('wrote', path)
 
 
+SIZE_LABEL = {'qwen2.5-0.5b-instruct-q4_k_m': 'Qwen\n0.5B', 'qwen2.5-1.5b-instruct-q4_k_m': 'Qwen\n1.5B',
+              'qwen2.5-3b-instruct-q4_k_m': 'Qwen\n3B', 'Llama-3.2-1B-Instruct-Q4_K_M': 'Llama\n1B',
+              'Llama-3.2-3B-Instruct-Q4_K_M': 'Llama\n3B', 'gemma-3-1b-it-Q4_K_M': 'Gemma\n1B'}
+
+
+def _change_bars(ax, ch, tag, metric, series, c=16384):
+    """Grouped bars of the paired change vs f16 for SIZE_MODELS; series = [(kv, label, color)]."""
+    models = [m for m in SIZE_MODELS if (tag, m, series[0][0], c, 1) in ch]
+    w = 0.8 / len(series)
+    for i, (kv, label, color) in enumerate(series):
+        cells = [ch.get((tag, m, kv, c, 1)) for m in models]
+        xs = [j + (i - (len(series) - 1) / 2) * w for j in range(len(models))]
+        vals = [x[0] if x else 0 for x in cells]
+        bars = ax.bar(xs, vals, w * 0.92, color=color, label=label,
+                      yerr=[x[1] if x else 0 for x in cells], capsize=2, error_kw={'lw': 0.8, 'ecolor': '#555'})
+        ax.bar_label(bars, [f'+{v:.0f}%' for v in vals], fontsize=7, padding=2)
+    for x in (2.5, 4.5):  # family separators
+        ax.axvline(x, color='#ccc', lw=0.8)
+    ax.set_xticks(range(len(models)), [SIZE_LABEL[m] for m in models], fontsize=8)
+    ax.axhline(0, color='#888', lw=0.8)
+    ax.grid(axis='y', alpha=0.3)
+    ax.set_axisbelow(True)
+
+
+def size_family_plot(rows, path):
+    tag = '15W-size'
+    if not any(r['tag'] == tag for r in rows):
+        return
+    series = [('q8_0', KV_LABEL['q8_0'], KV_COLOR['q8_0']), ('q4_0', KV_LABEL['q4_0'], KV_COLOR['q4_0'])]
+    fig, axes = plt.subplots(1, 2, figsize=(11, 3.9))
+    for ax, metric, title in ((axes[0], 'energy_per_request_net_j', 'Energy per request (net)'),
+                              (axes[1], 'decode_j_per_token', 'Decode energy per token (net)')):
+        _change_bars(ax, paired_change(rows, metric), tag, metric, series)
+        ax.set_title(title, fontsize=10)
+        ax.set_ylabel('change vs f16 cache at 16K (%)')
+    axes[0].legend(fontsize=8, loc='upper right')
+    fig.suptitle('Model size and family (4-bit weights, 15W): extra energy of a quantized KV cache at 16K, '
+                 'paired, 95% CI', fontsize=10)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print('wrote', path)
+
+
+def gen_length_plot(rows, path):
+    if not any(r['tag'] == '15W-gen512' for r in rows):
+        return
+    ch = paired_change(rows, 'energy_per_request_net_j')
+    # relabel the 512-token set into the size set's key space so both draw as series of one chart
+    merged = dict(ch)
+    for (tag, m, kv, c, n), v in ch.items():
+        if tag == '15W-gen512':
+            merged[('15W-size', m, kv + '@512', c, n)] = v
+    fig, axes = plt.subplots(1, 2, figsize=(11, 3.9), sharey=True)
+    for ax, kv in zip(axes, ('q8_0', 'q4_0')):
+        _change_bars(ax, merged, '15W-size', 'energy_per_request_net_j',
+                     [(kv, '128 generated tokens', '#1E8C76'), (kv + '@512', '512 generated tokens', '#8E4FB5')])
+        ax.set_title(f'{KV_LABEL[kv]}, 16K prompt', fontsize=10)
+    axes[0].set_ylabel('change in energy per request vs f16 (%)')
+    axes[0].legend(fontsize=8, loc='upper right')
+    fig.suptitle('Longer replies: the penalty per request grows 1.7–2.2× with 512 generated tokens (Gemma: unchanged) '
+                 '(paired, 95% CI)', fontsize=10)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print('wrote', path)
+
+
+def evict_plot(rows, path):
+    tag = '15W-evict'
+    ev = [r for r in rows if r['tag'] == tag]
+    if not ev:
+        return
+    models = [m for m in ('Qwen2.5-0.5B-Instruct', 'Llama-3.2-1B-Instruct') if any(r['model'] == m for r in ev)]
+    ch = paired_change(rows, 'energy_per_request_net_j')
+    series = [('streamingllm@0.5', 'StreamingLLM, 50% removed', '#1baf7a', '-'),
+              ('streamingllm@0.75', 'StreamingLLM, 75% removed', '#1baf7a', '--'),
+              ('snapkv@0.5', 'SnapKV, 50% removed', '#6250d6', '-'),
+              ('snapkv@0.75', 'SnapKV, 75% removed', '#6250d6', '--')]
+    fig, axes = plt.subplots(1, len(models), figsize=(5.6 * len(models), 3.9), sharey=True, squeeze=False)
+    for ax, m in zip(axes[0], models):
+        for kv, label, color, ls in series:
+            pts = sorted((k[3], v) for k, v in ch.items() if k[:3] == (tag, m, kv) and k[4] == 1)
+            if not pts:
+                continue
+            xs = [p[0] for p in pts]
+            ax.errorbar(xs, [p[1][0] for p in pts], yerr=[p[1][1] for p in pts], color=color, ls=ls, lw=2,
+                        marker='o', ms=6, capsize=2, label=label)
+        ax.axhline(0, color='#888', lw=0.8)
+        ax.set_xscale('log', base=2)
+        ax.set_xticks([1024, 4096, 8192, 16384], ['1K', '4K', '8K', '16K'])
+        ax.set_xlabel('prompt length')
+        ax.set_title(SHORT.get(m, m), fontsize=10)
+        ax.grid(alpha=0.3)
+    axes[0][0].set_ylabel('change in energy per request vs no eviction (%)')
+    axes[0][0].legend(fontsize=8)
+    fig.suptitle('Eviction (kvpress, PyTorch, 15W) vs no eviction: energy per request, paired 95% CI', fontsize=10)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print('wrote', path)
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -360,6 +486,9 @@ def main():
 
     kv_files = sorted(p for p in glob.glob(str(res / 'kv_*.jsonl')) if '190420' not in p)  # skip v1 quick test
     rows = load_runs(kv_files)
+    evict_files = sorted(glob.glob(str(res / 'evict_*.jsonl')))  # eviction (kvpress), kv_type f16 = no eviction
+    rows += load_runs(evict_files)
+    kv_files += evict_files
     v2 = [r for r in rows if r['tag'].endswith('-v2')]
     v1 = [r for r in rows if r['tag'] in ('15W', '7W')]
     print(f'{len(rows)} rows ({len(v1)} v1, {len(v2)} v2 main grid)')
@@ -409,6 +538,9 @@ def main():
     concurrency_plot(rows, out / '07_concurrency.png')
     fit_plot(rows, out / '08_fit.png')
     kernel_plot(stats['kernels'], out / '09_kernels.png')
+    size_family_plot(rows, out / '10_size_family.png')
+    gen_length_plot(rows, out / '11_gen512.png')
+    evict_plot(rows, out / '12_eviction.png')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,32 @@
+{
+ "tag": "15W-evict",
+ "gen": 128,
+ "methods": [
+  "f16",
+  "streamingllm@0.5",
+  "snapkv@0.5",
+  "streamingllm@0.75",
+  "snapkv@0.75"
+ ],
+ "contexts": [
+  1024,
+  4096,
+  8192
+ ],
+ "rounds": 5,
+ "torch": "2.15.0+cu132",
+ "cuda": "13.2",
+ "started": "20261102_061220",
+ "kvpress": "?",
+ "transformers": "4.57.6",
+ "idle_w": {
+  "VDD_CPU_GPU_CV": 0.5146922666666666,
+  "VDD_IN": 3.5783744,
+  "VDD_SOC": 1.081678222222222
+ },
+ "idle_w_end": {
+  "VDD_CPU_GPU_CV": 0.7562634666666667,
+  "VDD_IN": 3.8588572444444442,
+  "VDD_SOC": 1.1378737777777779
+ }
+}

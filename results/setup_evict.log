@@ -1,0 +1,5 @@
+torch 2.15.0+cu132 cuda 13.2 available True
+device Orin capability (8, 7)
+matmul ok 25.570674896240234
+run: /home/koushik/evict-venv/bin/python /home/koushik/thesis2/jetson/bench_evict.py --quick
+EXIT=0
